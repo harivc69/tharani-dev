@@ -1,0 +1,231 @@
+<div class="why-choose-thani-section">
+  <div class="section-header">
+    <p class="section-subheader">{{ section.settings.subheader_text }}</p>
+    <h2 class="section-title">{{ section.settings.title_text }}</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="section-content">
+    <p>{{ section.settings.description_paragraph_1 }}</p>
+    <p>{{ section.settings.description_paragraph_2 }}</p>
+  </div>
+
+  <div class="features-grid">
+    {% for block in section.blocks %}
+      <div class="feature-item">
+        {% if block.settings.icon != blank %}
+          <div class="feature-icon-wrapper">
+            <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.title }}" class="feature-icon">
+          </div>
+        {% endif %}
+        <h3 class="feature-title">{{ block.settings.title }}</h3>
+        <p class="feature-description">{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .why-choose-thani-section {
+    text-align: center;
+    padding: 0px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .section-subheader {
+    font-size: 10px;
+    font-weight: bold;
+    color: #3C1615;
+    margin: 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .section-title {
+    font-size: 2.2em;
+    color: #3C1615;
+    font-weight: 700;
+    margin: 0px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 4px;
+    background-color: #d4a762;
+    margin: 0 auto 40px;
+  }
+
+  .section-content p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #777;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  
+  }
+
+  .feature-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.3s ease;
+    min-height: 300px;
+    min-width: 300px;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-icon-wrapper {
+    border: 3px solid #59230a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .feature-icon {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .feature-title {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0px;
+    text-align: center;
+    min-height: 2.5em; /* Ensures alignment even with varying title lengths */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-description {
+    font-size: 0.95em;
+    color: #777;
+    line-height: 1.6;
+    text-align: center;
+    margin-top:0px;
+  }
+
+  @media (max-width: 768px) {
+    .feature-item {
+      min-height: 250px;
+      min-width: 250px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .feature-item {
+      min-height: 200px;
+      min-width: 200px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Why Choose Tharan",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheader_text",
+      "label": "Subheader Text",
+      "default": "The Sustainable Solutions for Prevailing Problems"
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Why Choose Tharani?"
+    },
+    {
+      "type": "textarea",
+      "id": "description_paragraph_1",
+      "label": "Description Paragraph 1",
+      "default": "There is nothing better than consuming fresh and natural foods. Tharani is found with the motive of helping people in taking back control of what they consume and learn where it comes from."
+    },
+    {
+      "type": "textarea",
+      "id": "description_paragraph_2",
+      "label": "Description Paragraph 2",
+      "default": "Most of our products' sources are brought directly from farmers, within a sustainable ecosystem that benefits everybody. We aim to provide natural and more traceable food sources with the vision of making a healthy lifestyle accessible for all at an affordable price."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "High Nutritious Value"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Our products are known for their quality and nutritious value, which are grown organically and delivered to your door within hours of harvest."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Tharani",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Farmer Consumer Symbiotic",
+            "description": "We support the symbiotic relationship between farmer and consumer, with the goal to achieve substantial-level sustainability and enhance the common good with harmony with nature."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Sustainable Farming",
+            "description": "Our products are developed organically and processed in the best ecologically sustainable environment, which is naturally good for one's health and the earth. We are committed to using only sustainable methods, ensuring maximum impact."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Revitalise Ecology and Soil",
+            "description": "Our values extend to the fields of ecology and soil, which drives us to move towards social and conscious farming practices, revitalising the land and promoting a healthier planet."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

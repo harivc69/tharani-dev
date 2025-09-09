@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-banner": {
+      "type": "collection-banner",
+      "settings": {
+        "banner_image": "shopify://shop_images/Naturally-sourced_Jaggery_and_Sugar.jpg",
+        "banner_height": "small"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "icon_xjxzCN": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/flourr.webp",
+            "icon_label": "New",
+            "icon_url": "shopify://collections/all-products"
+          }
+        },
+        "icon_KDj9yh": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/ric.webp",
+            "icon_label": "Ghee",
+            "icon_url": "shopify://collections/pure-a2-ghee"
+          }
+        },
+        "icon_3QmpAU": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/sugrr.webp",
+            "icon_label": "Oils",
+            "icon_url": "shopify://collections/authentic-wood-pressed-oils"
+          }
+        },
+        "icon_drH8ba": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/a2ghee.webp",
+            "icon_label": "Honey",
+            "icon_url": "shopify://collections/natural-honey"
+          }
+        },
+        "icon_jEbbBW": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/a2ghee.webp",
+            "icon_label": "@499",
+            "icon_url": ""
+          }
+        },
+        "icon_Dc7rHc": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/turm.webp",
+            "icon_label": "@999",
+            "icon_url": ""
+          }
+        },
+        "video_ayRjKY": {
+          "type": "video",
+          "settings": {
+            "video_title": "Desi Cow Ghee",
+            "video": "shopify://files/videos/🐄 Pure Bliss in Every Spoonful! Embracing Wellness with A2 Desi Cow Ghee.mp4"
+          }
+        },
+        "video_Ekdzm6": {
+          "type": "video",
+          "settings": {
+            "video_title": "Coconut Oil",
+            "video": "shopify://files/videos/master (4).mp4"
+          }
+        },
+        "video_A3kFLB": {
+          "type": "video",
+          "settings": {
+            "video_title": "Ground Nut Oil",
+            "video": "shopify://files/videos/Pure Goodness, Poured from Nature- Tharani Groundnut Oil🥜🥜🥜Tharani Woodpressed Groundnut Oil-.mp4"
+          }
+        },
+        "video_wp9zGR": {
+          "type": "video",
+          "settings": {
+            "video_title": "Honey",
+            "video": "shopify://files/videos/SmallBee_Honey_1a44cc06-868e-4ed4-a2a5-0f2bf135ba21.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "icon_xjxzCN",
+        "icon_KDj9yh",
+        "icon_3QmpAU",
+        "icon_drH8ba",
+        "icon_jEbbBW",
+        "icon_Dc7rHc",
+        "video_ayRjKY",
+        "video_Ekdzm6",
+        "video_A3kFLB",
+        "video_wp9zGR"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "filter_new_products": false,
+        "new_products_tag": "new",
+        "filter_best_products": false,
+        "best_products_tag": "best",
+        "filter_fresh_product": false,
+        "fresh_product_tag": "fresh",
+        "filter_keyword_1": false,
+        "keyword_1_tag": "keyword1",
+        "keyword_1_label": "Keyword 1",
+        "filter_keyword_2": false,
+        "keyword_2_tag": "keyword2",
+        "keyword_2_label": "Keyword 2",
+        "filter_keyword_3": false,
+        "keyword_3_tag": "keyword3",
+        "keyword_3_label": "Keyword 3",
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "usp": {
+      "type": "usp",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-banner",
+    "banner",
+    "product-grid",
+    "usp"
+  ]
+}

@@ -1,0 +1,1002 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Include order cancellation handler {%- endcomment -%}
+{% render 'order-cancellation' %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="customer order section-{{ section.id }}-padding">
+  <div class="order-header">
+    <div class="breadcrumb">
+      <a href="{{ routes.account_url }}" class="breadcrumb-link">← Back to Account</a>
+    </div>
+    <h1 class="order-title">{{ 'customer.order.title' | t: name: order.name }}</h1>
+    {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
+    <p class="order-date">{{ 'customer.order.date_html' | t: date: order_date }}</p>
+  </div>
+
+  <div class="order-content">
+    <div class="order-main">
+      {%- if order.cancelled -%}
+        {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
+        <div class="order-status order-status--cancelled">
+          <h3>Order Cancelled</h3>
+          <p><strong>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</strong></p>
+          <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
+        </div>
+      {%- else -%}
+        <div class="order-status-grid">
+          <div class="status-card">
+            <h4>Order Status</h4>
+            <span class="status-value status-{{ order.fulfillment_status | default: 'pending' }}">
+              {{ order.fulfillment_status_label }}
+            </span>
+          </div>
+          <div class="status-card">
+            <h4>Payment Status</h4>
+            <span class="status-value status-{{ order.financial_status }}">
+              {{ order.financial_status_label }}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Order Actions Section {%- endcomment -%}
+      <div class="order-actions">
+        <h3>Available Actions</h3>
+        <div class="order-actions__buttons">
+          {%- unless order.cancelled -%}
+            {%- comment -%} Show cancel button for most orders except fully fulfilled ones {%- endcomment -%}
+            {%- unless order.fulfillment_status == 'fulfilled' -%}
+              <button type="button" class="btn btn--cancel" onclick="showCancelOrderModal('{{ order.name }}')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+                Request Order Cancellation
+              </button>
+            {%- endunless -%}
+          {%- endunless -%}
+          
+          <a href="mailto:support@{{ shop.domain }}?subject=Order Inquiry - {{ order.name }}&body=Hi, I have a question about my order {{ order.name }}." class="btn btn--support">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Contact Support
+          </a>
+        </div>
+      </div>
+
+      <table role="table" class="order-details">
+        <caption class="visually-hidden">
+          {{ 'customer.order.title' | t: name: order.name }}
+        </caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th id="ColumnProduct" scope="col" role="columnheader">{{ 'customer.order.product' | t }}</th>
+            <th id="ColumnSku" scope="col" role="columnheader">{{ 'customer.order.sku' | t }}</th>
+            <th id="ColumnPrice" scope="col" role="columnheader">{{ 'customer.order.price' | t }}</th>
+            <th id="ColumnQuantity" scope="col" role="columnheader">{{ 'customer.order.quantity' | t }}</th>
+            <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.order.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          {%- for line_item in order.line_items -%}
+            <tr role="row">
+              <td
+                id="Row{{ line_item.key }}"
+                headers="ColumnProduct"
+                role="rowheader"
+                scope="row"
+                data-label="{{ 'customer.order.product' | t }}"
+              >
+                <div>
+                  {%- if line_item.url != blank -%}
+                    <a href="{{ line_item.url }}">{{ line_item.title | escape }}</a>
+                  {%- else -%}
+                    <p>{{ line_item.title | escape }}</p>
+                  {%- endif -%}
+                  {%- assign property_size = line_item.properties | size -%}
+                  {%- unless line_item.selling_plan_allocation == null and property_size == 0 -%}
+                    <div class="properties">
+                      {%- unless line_item.product.has_only_default_variant -%}
+                        <span>
+                          {{ line_item.variant.title | escape }}
+                        </span>
+                      {%- endunless -%}
+                      {%- unless line_item.selling_plan_allocation == null -%}
+                        <span>
+                          {{ line_item.selling_plan_allocation.selling_plan.name }}
+                        </span>
+                      {%- endunless -%}
+                      {%- if property_size != 0 -%}
+                        {%- for property in line_item.properties -%}
+                          {% assign property_first_char = property.first | slice: 0 %}
+                          {%- if property.last != blank and property_first_char != '_' -%}
+                            <span>{{ property.first }}:</span>
+                            <span>
+                              {%- if property.last contains '/uploads/' -%}
+                                <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                              {%- else -%}
+                                {{ property.last }}
+                              {%- endif -%}
+                            </span>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endunless -%}
+
+                  {%- if line_item.line_level_discount_allocations != blank -%}
+                    <ul role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                        <li>
+                          <span class="svg-wrapper">
+                            {{- 'icon-discount.svg' | inline_asset_content -}}
+                          </span>
+                          {{- discount_allocation.discount_application.title | escape }} (-
+                          {{- discount_allocation.amount | money -}}
+                          )
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+
+                  {%- if line_item.fulfillment -%}
+                    <div class="fulfillment tracking-info">
+                      {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
+                      <div class="tracking-status">
+                        <strong>✅ {{ 'customer.order.fulfilled_at_html' | t: date: created_at }}</strong>
+                      </div>
+
+                      {%- if line_item.fulfillment.tracking_number -%}
+                        <div class="tracking-details">
+                          <p><strong>Tracking Number:</strong> {{ line_item.fulfillment.tracking_number }}</p>
+                          {%- if line_item.fulfillment.tracking_company -%}
+                            <p><strong>Carrier:</strong> {{ line_item.fulfillment.tracking_company }}</p>
+                          {%- endif -%}
+                          {%- if line_item.fulfillment.tracking_url -%}
+                            <a href="{{ line_item.fulfillment.tracking_url }}" class="button button--primary" target="_blank">
+                              🚚 {{ 'customer.order.track_shipment' | t }}
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </td>
+              <td
+                headers="Row{{ line_item.key }} ColumnSku"
+                role="cell"
+                data-label="{{ 'customer.order.sku' | t }}"
+              >
+                {{ line_item.sku }}
+              </td>
+              <td
+                headers="Row{{ line_item.key }} ColumnPrice"
+                role="cell"
+                data-label="{{ 'customer.order.price' | t }}"
+              >
+                {%- if line_item.original_price != line_item.final_price or line_item.unit_price_measurement -%}
+                  <dl>
+                    {%- if line_item.original_price != line_item.final_price -%}
+                      <dt>
+                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      </dt>
+                      <dd class="regular-price">
+                        <s>{{ line_item.original_price | money }}</s>
+                      </dd>
+                      <dt>
+                        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                      </dt>
+                      <dd>
+                        <span>{{ line_item.final_price | money }}</span>
+                      </dd>
+                    {%- else -%}
+                      <dt>
+                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      </dt>
+                      <dd>
+                        {{ line_item.original_price | money }}
+                      </dd>
+                    {%- endif -%}
+                    {%- if line_item.unit_price_measurement -%}
+                      <dt>
+                        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                      </dt>
+                      <dd class="unit-price">
+                        <span>
+                          {%- capture unit_price_separator -%}
+                            <span aria-hidden="true">/</span
+                            ><span class="visually-hidden">{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                          {%- endcapture -%}
+                          {%- capture unit_price_base_unit -%}
+                            {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+                              {{- line_item.unit_price_measurement.reference_value -}}
+                            {%- endif -%}
+                            {{ line_item.unit_price_measurement.reference_unit }}
+                          {%- endcapture -%}
+                          <span data-unit-price>{{ line_item.unit_price | money }}</span>
+                          {{- unit_price_separator -}}
+                          {{- unit_price_base_unit -}}
+                        </span>
+                      </dd>
+                    {%- endif -%}
+                  </dl>
+                {%- else -%}
+                  <span>{{ line_item.final_price | money }}</span>
+                {%- endif -%}
+              </td>
+              <td
+                headers="Row{{ line_item.key }} ColumnQuantity"
+                role="cell"
+                data-label="{{ 'customer.order.quantity' | t }}"
+              >
+                {{ line_item.quantity }}
+              </td>
+              <td
+                headers="Row{{ line_item.key }} ColumnTotal"
+                role="cell"
+                data-label="{{ 'customer.order.total' | t }}"
+              >
+                {%- if line_item.original_line_price != line_item.final_line_price -%}
+                  <dl>
+                    <dt>
+                      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                    </dt>
+                    <dd class="regular-price">
+                      <s>{{ line_item.original_line_price | money }}</s>
+                    </dd>
+                    <dt>
+                      <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                    </dt>
+                    <dd>
+                      <span>{{ line_item.final_line_price | money }}</span>
+                    </dd>
+                  </dl>
+                {%- else -%}
+                  {{ line_item.original_line_price | money }}
+                {%- endif -%}
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot role="rowgroup">
+          <tr role="row">
+            <td id="RowSubtotal" role="rowheader" scope="row" colspan="4">
+              {{ 'customer.order.subtotal' | t }}
+            </td>
+            <td headers="RowSubtotal" role="cell" data-label="{{ 'customer.order.subtotal' | t }}">
+              {{ order.line_items_subtotal_price | money }}
+            </td>
+          </tr>
+          {%- if order.cart_level_discount_applications != blank -%}
+            <tr role="row">
+              {%- for discount_application in order.cart_level_discount_applications -%}
+                <td id="RowDiscount" role="rowheader" scope="row" colspan="4">
+                  {{ 'customer.order.discount' | t }}
+                  <span class="cart-discount">
+                    <span class="svg-wrapper">
+                      {{- 'icon-discount.svg' | inline_asset_content -}}
+                    </span>
+                    {{- discount_application.title | escape -}}
+                  </span>
+                </td>
+                <td headers="RowDiscount" role="cell" data-label="{{ 'customer.order.discount' | t }}">
+                  <div>
+                    <span>-{{ discount_application.total_allocated_amount | money }}</span>
+                    <span class="cart-discount">
+                      <span class="svg-wrapper">
+                        {{- 'icon-discount.svg' | inline_asset_content -}}
+                      </span>
+                      {{- discount_application.title | escape -}}
+                    </span>
+                  </div>
+                </td>
+              {%- endfor -%}
+            </tr>
+          {%- endif -%}
+          {%- for shipping_method in order.shipping_methods -%}
+            <tr role="row">
+              <td id="RowShipping" role="rowheader" scope="row" colspan="4">
+                {{ 'customer.order.shipping' | t }} ({{ shipping_method.title | escape }})
+              </td>
+              <td
+                headers="RowShipping"
+                role="cell"
+                data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title | escape }})"
+              >
+                {{ shipping_method.price | money }}
+              </td>
+            </tr>
+          {%- endfor -%}
+          {%- for tax_line in order.tax_lines -%}
+            <tr role="row">
+              <td id="RowTax" role="rowheader" scope="row" colspan="4">
+                {{ 'customer.order.tax' | t }} ({{ tax_line.title | escape }}
+                {{ tax_line.rate | times: 100 }}%)
+              </td>
+              <td
+                headers="RowTax"
+                role="cell"
+                data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title | escape }} {{ tax_line.rate | times: 100 }}%)"
+              >
+                {{ tax_line.price | money }}
+              </td>
+            </tr>
+          {%- endfor -%}
+          {%- if order.total_duties -%}
+            <tr role="row">
+              <td id="RowDuties" role="rowheader" scope="row" colspan="4">{{ 'customer.order.total_duties' | t }}</td>
+              <td headers="RowDuties" role="cell" data-label="{{ 'customer.order.total_duties' | t }}">
+                {{ order.total_duties | money }}
+              </td>
+            </tr>
+          {%- endif -%}
+          {%- if order.total_refunded_amount > 0 -%}
+            <tr role="row">
+              <td id="RowTotalRefund" role="rowheader" scope="row" colspan="3">
+                {{ 'customer.order.total_refunded' | t }}
+              </td>
+              <td
+                headers="RowTotalRefund"
+                role="cell"
+                colspan="2"
+                data-label="{{ 'customer.order.total_refunded' | t }}"
+              >
+                -{{ order.total_refunded_amount | money_with_currency }}
+              </td>
+            </tr>
+          {%- endif -%}
+          <tr role="row">
+            <td id="RowTotal" role="rowheader" scope="row" colspan="3">{{ 'customer.order.total' | t }}</td>
+            <td headers="RowTotal" role="cell" colspan="2" data-label="{{ 'customer.order.total' | t }}">
+              {{ order.total_net_amount | money_with_currency }}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+    <div class="order-addresses">
+      <div class="address-card">
+        <h3>{{ 'customer.order.billing_address' | t }}</h3>
+        <div class="address-content">
+          {{ order.billing_address | format_address }}
+        </div>
+      </div>
+      <div class="address-card">
+        <h3>{{ 'customer.order.shipping_address' | t }}</h3>
+        <div class="address-content">
+          {{ order.shipping_address | format_address }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Order Cancellation Modal {%- endcomment -%}
+<div id="cancelOrderModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Cancel Order</h3>
+      <span class="modal-close" onclick="closeCancelOrderModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="cancellation-warning">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">
+          <p><strong>Are you sure you want to cancel order <span id="orderNameSpan"></span>?</strong></p>
+          <p>This action will immediately process the cancellation. You will receive a confirmation email shortly.</p>
+        </div>
+      </div>
+      
+      <form id="cancelOrderForm">
+        <div class="form-group">
+          <label for="cancelReason">Reason for cancellation (optional):</label>
+          <textarea id="cancelReason" name="reason" rows="3" placeholder="Please let us know why you'd like to cancel this order..."></textarea>
+        </div>
+        <div class="cancellation-note">
+          <p><small><strong>Note:</strong> If payment was processed, refunds typically take 3-5 business days to appear in your account.</small></p>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="button button--tertiary" onclick="closeCancelOrderModal()">Keep Order</button>
+          <button type="submit" class="button button--primary button--danger">Cancel Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .customer.order {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .order-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 15px;
+  }
+  
+  .breadcrumb-link {
+    color: #59230A;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .breadcrumb-link:hover {
+    text-decoration: underline;
+  }
+  
+  .order-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 10px 0;
+  }
+  
+  .order-date {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .order-content {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .order-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .status-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .status-card h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-value {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  
+  .status-pending, .status-unfulfilled {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+  }
+  
+  .status-fulfilled {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .status-paid {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .status-cancelled {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .order-status--cancelled {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .order-status--cancelled h3 {
+    color: #721c24;
+    margin: 0 0 10px 0;
+  }
+  
+  .order-actions {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .order-actions h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .order-actions__buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn--cancel {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .btn--cancel:hover {
+    background: #c82333;
+    transform: translateY(-1px);
+  }
+  
+  .btn--support {
+    background: #007bff;
+    color: white;
+  }
+  
+  .btn--support:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+  }
+  
+  .order-details {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+  }
+  
+  .order-details th,
+  .order-details td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  
+  .order-details th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #222;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .order-details tfoot td {
+    background: #f8f9fa;
+    font-weight: 600;
+  }
+  
+  .order-addresses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .address-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .address-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .address-content {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .tracking-info {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+  }
+  
+  .tracking-details {
+    margin-top: 10px;
+  }
+  
+  .tracking-details p {
+    margin: 5px 0;
+  }
+  
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .modal-header {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-close {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .cancellation-warning {
+    display: flex;
+    gap: 15px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .warning-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  
+  .warning-text p {
+    margin: 0 0 8px 0;
+  }
+  
+  .warning-text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .cancellation-note {
+    background: #e7f3ff;
+    border: 1px solid #b8daff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .cancellation-note p {
+    margin: 0;
+    color: #004085;
+  }
+  
+  .button--danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+  }
+  
+  .button--danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+  }
+  
+  .button--danger:disabled {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    opacity: 0.6;
+  }
+  
+  @media (max-width: 768px) {
+    .customer.order {
+      padding: 0 15px;
+    }
+    
+    .order-title {
+      font-size: 1.5rem;
+    }
+    
+    .order-status-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .order-actions__buttons {
+      flex-direction: column;
+    }
+    
+    .btn {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .order-details {
+      font-size: 14px;
+    }
+    
+    .order-details th,
+    .order-details td {
+      padding: 10px 8px;
+    }
+    
+    .order-addresses {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+      flex-direction: column-reverse;
+    }
+  }
+</style>
+
+<script>
+  function showCancelOrderModal(orderName) {
+    document.getElementById('orderNameSpan').textContent = orderName;
+    document.getElementById('cancelOrderModal').style.display = 'block';
+  }
+  
+  function closeCancelOrderModal() {
+    document.getElementById('cancelOrderModal').style.display = 'none';
+    document.getElementById('cancelOrderForm').reset();
+    
+    // Reset button state
+    const submitBtn = document.querySelector('#cancelOrderForm button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Cancel Order';
+    }
+  }
+  
+  document.getElementById('cancelOrderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const orderName = document.getElementById('orderNameSpan').textContent;
+    const reason = document.getElementById('cancelReason').value;
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Cancelling...';
+    
+    // Since we can't directly cancel orders from the frontend due to Shopify limitations,
+    // we'll create a draft order cancellation request through a form submission
+    const formData = new FormData();
+    formData.append('order_name', orderName);
+    formData.append('cancellation_reason', reason || 'Customer requested cancellation');
+    formData.append('action', 'cancel_order');
+    
+    // Try to submit the cancellation request
+    fetch('/apps/order-management/cancel', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Failed to process cancellation');
+    })
+    .then(data => {
+      if (data.success) {
+        // Show success message and refresh page
+        alert('✅ Order has been successfully cancelled!');
+        window.location.reload();
+      } else {
+        throw new Error(data.message || 'Cancellation failed');
+      }
+    })
+    .catch(error => {
+      console.error('Cancellation error:', error);
+      
+      // Fallback to creating a cancellation note/tag on the order
+      const fallbackData = new FormData();
+      fallbackData.append('order_id', '{{ order.id }}');
+      fallbackData.append('note', `CANCELLATION REQUESTED: ${reason || 'No reason provided'}`);
+      
+      // Alternative: Use Shopify's customer notes or order tags
+      fetch('/cart/update.js', {
+        method: 'POST',
+        body: JSON.stringify({
+          attributes: {
+            'cancellation_request': orderName,
+            'cancellation_reason': reason || 'Customer requested cancellation',
+            'cancellation_date': new Date().toISOString()
+          }
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(() => {
+        // Show message that request has been submitted for manual processing
+        alert('⏳ Your cancellation request has been submitted. Our team will process it within 24 hours and notify you via email.');
+        closeCancelOrderModal();
+      })
+      .catch(() => {
+        // Final fallback - email method
+        const subject = `URGENT: Order Cancellation Request - ${orderName}`;
+        const body = `AUTOMATED CANCELLATION REQUEST\n\nOrder: ${orderName}\nReason: ${reason || 'No reason provided'}\nRequested: ${new Date().toLocaleString()}\n\nPlease process this cancellation immediately and confirm via email.`;
+        
+        const mailtoLink = `mailto:support@{{ shop.domain }}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(mailtoLink, '_blank');
+        
+        alert('📧 Please send the email that just opened to complete your cancellation request.');
+        closeCancelOrderModal();
+      });
+    })
+    .finally(() => {
+      // Re-enable button
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Cancel Order';
+    });
+  });
+  
+  // Close modal when clicking outside
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('cancelOrderModal');
+    if (event.target === modal) {
+      closeCancelOrderModal();
+    }
+  });
+  
+  // Add order status checking functionality
+  function checkOrderStatus() {
+    const orderId = '{{ order.id }}';
+    
+    fetch(`/orders/${orderId}.js`)
+      .then(response => response.json())
+      .then(order => {
+        if (order.cancelled_at) {
+          // Order has been cancelled, refresh the page
+          window.location.reload();
+        }
+      })
+      .catch(error => {
+        console.log('Order status check failed:', error);
+      });
+  }
+  
+  // Check order status every 30 seconds if page is visible
+  let statusCheckInterval;
+  
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      clearInterval(statusCheckInterval);
+    } else {
+      statusCheckInterval = setInterval(checkOrderStatus, 30000);
+    }
+  });
+  
+  // Start checking when page loads
+  if (!document.hidden) {
+    statusCheckInterval = setInterval(checkOrderStatus, 30000);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-order.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

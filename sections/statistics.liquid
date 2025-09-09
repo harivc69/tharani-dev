@@ -1,0 +1,102 @@
+<!-- sections/statistics-section.liquid -->
+<div class="statistics-wrapper" style="display: flex; justify-content: space-around; padding: 60px 0; background-color: #3b1412; color: #fff;">
+  {% for block in section.blocks %}
+    <div class="stat-box" style="text-align: center;">
+      <div class="stat-number" data-target="{{ block.settings.number }}" style="font-size: 48px; font-weight: bold;">0</div>
+      <div class="stat-label" style="text-transform: uppercase; font-size: 14px; margin-top: 5px;">
+        {{ block.settings.line1 }}<br>{{ block.settings.line2 }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.stat-number');
+
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let count = 0;
+      const speed = target < 50 ? 30 : 5;
+
+      const updateCount = () => {
+        const increment = Math.ceil(target / 100);
+        if (count < target) {
+          count += increment;
+          counter.textContent = count + "+";
+          setTimeout(updateCount, speed);
+        } else {
+          counter.textContent = target + "+";
+        }
+      };
+
+      updateCount();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Statistics Section",
+  "tag": "section",
+  "class": "section-statistics",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "1500"
+        },
+        {
+          "type": "text",
+          "id": "line1",
+          "label": "Top Line",
+          "default": "FARMERS"
+        },
+        {
+          "type": "text",
+          "id": "line2",
+          "label": "Bottom Line",
+          "default": "EMPOWERED"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Statistics Section",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "1500",
+            "line1": "FARMERS",
+            "line2": "EMPOWERED"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "30",
+            "line1": "JOBS CREATED",
+            "line2": "IN RURAL INDIA"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "15",
+            "line1": "LAB TESTS",
+            "line2": "DONE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,350 @@
+
+
+{% assign section_image = section.settings.section_image %}
+{% assign heading = section.settings.heading %}
+{% assign description = section.settings.description %}
+{% assign button_text = section.settings.button_text %}
+{% assign button_link = section.settings.button_link %}
+{% assign image_position = section.settings.image_position %}
+{% assign text_alignment = section.settings.text_alignment %}
+
+<div class="custom-image-content-section custom-image-content-{{ section.id }}"
+     style="background-color: {{ section.settings.background_color }};">
+
+ 
+  <div class="page-width custom-section-max-width">
+    <div class="custom-image-content-wrapper {% if image_position == 'right' %}image-right{% endif %}">      
+
+      <div class="custom-image-content__content" style="text-align: {{ text_alignment }};">
+        <h3 class="custom-image-content__subheading">
+          {{ section.settings.subheading }}
+        </h3>
+        {% if heading != blank %}
+          <h2 class="custom-image-content__heading">{{ heading }}</h2>
+        {% endif %}
+
+        {% if description != blank %}
+          <div class="custom-image-content__description rte">
+            {{ description }}
+          </div>
+        {% endif %}
+
+        {% if button_text != blank and button_link != blank %}
+          <a href="{{ button_link }}" class="custom-image-content__button">
+            {{ button_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="custom-image-content__image">
+        {% if section_image != blank %}
+          <img src="{{ section_image | image_url: width: 800 }}"
+               alt="{{ heading | escape }}"
+               loading="lazy">
+        {% else %}
+          <div class="placeholder-image">
+            {% comment %} Placeholder for theme customizer view {% endcomment %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            <p>Add Image</p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% style %}
+  /* Section specific styling for {{ section.id }} */
+  .custom-image-content-{{ section.id }} {
+    padding: 40px 0; /* Vertical padding for the section */
+  }
+
+  /* Specific width for this section's content */
+  .custom-image-content-{{ section.id }} .custom-section-max-width {
+    max-width: 1300px; /* Set your desired width here */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding-left: 20px; /* Add some padding for smaller screens */
+    padding-right: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box; /* Include padding in the width calculation */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content-wrapper {
+    display: flex;
+    flex-direction: row; /* Default: image left, content right */
+    align-items: center; /* Vertically align items in the middle */
+    gap: 30px; /* Space between image and content */
+    background-color: #fff; /* White background for the card effect */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Soft shadow for the card */
+    overflow: hidden; /* Ensures rounded corners apply cleanly */
+    padding: 30px; /* Internal padding of the card */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content-wrapper.image-right {
+    flex-direction: row-reverse; /* Swap order if image position is right */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__image {
+    flex: 1; /* Takes up equal space initially */
+    min-width: 45%; /* Ensure image takes at least 45% of width */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__image img {
+    display: block;
+    max-width: 100%;
+    height: auto; /* Allow image to define its height */
+    border-radius: 8px; /* Slightly rounded corners for the image */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__image .placeholder-image {
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; /* Placeholder minimum height */
+    border-radius: 8px;
+    color: #999;
+  }
+  .custom-image-content-{{ section.id }} .custom-image-content__image .placeholder-image svg {
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 10px;
+  }
+
+
+  .custom-image-content-{{ section.id }} .custom-image-content__content {
+    flex: 1; /* Takes up equal space initially */
+    padding: 20px 0; /* Some internal padding */
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__subheading {
+      font-size: 1.1em;
+      color: {{ section.settings.subheading_color }}; /* Customizable color */
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__heading {
+    font-size: 2em; /* Large heading */
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: {{ section.settings.heading_color }};
+    line-height: 1.2;
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: {{ section.settings.description_color }};
+    margin-bottom: 25px;
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__button {
+    display: inline-block;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .custom-image-content-{{ section.id }} .custom-image-content__button:hover {
+    background-color: {{ section.settings.button_bg_color | color_darken: 10 }};
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 990px) {
+    .custom-image-content-{{ section.id }} .custom-image-content-wrapper {
+      flex-direction: column; /* Stack vertically on smaller screens */
+      padding: 20px;
+    }
+
+    .custom-image-content-{{ section.id }} .custom-image-content-wrapper.image-right {
+      flex-direction: column; /* Keep stacked, reverse is not needed */
+    }
+
+    .custom-image-content-{{ section.id }} .custom-image-content__image,
+    .custom-image-content-{{ section.id }} .custom-image-content__content {
+      width: 100%; /* Take full width */
+      min-width: unset; /* Remove min-width constraint */
+      padding: 0; /* Reset internal padding */
+    }
+
+    .custom-image-content-{{ section.id }} .custom-image-content__content {
+      margin-top: 20px; /* Space between stacked image and content */
+    }
+
+    .custom-image-content-{{ section.id }} .custom-image-content__heading {
+      font-size: 2em;
+    }
+
+    .custom-image-content-{{ section.id }} .custom-image-content__description {
+      font-size: 1em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .custom-image-content-{{ section.id }} .custom-image-content__heading {
+      font-size: 1.8em;
+    }
+    .custom-image-content-{{ section.id }} .custom-image-content__subheading {
+      font-size: 1em;
+    }
+    .custom-image-content-{{ section.id }} .custom-image-content__description {
+      font-size: 0.95em;
+    }
+    .custom-image-content-{{ section.id }} .custom-image-content-wrapper {
+        padding: 15px;
+    }
+    .custom-image-content-{{ section.id }} .custom-section-max-width {
+        padding-left: 15px; /* Adjust padding for very small screens */
+        padding-right: 15px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Image with Text Block",
+  "tag": "section",
+  "class": "shopify-section-image-content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout & Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Image",
+      "info": "Upload the image for this section."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading (Optional)",
+      "default": "Nature's Nourish Woodpressed Oils"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Embrace Nature's Goodness with Our Premium Woodpressed Oils & Ghee."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>With this exclusive combo kit, you can select 4 out of 6 premium wood-pressed oils—Groundnut, Safflower, Sunflower, Mustard, Coconut, and Sesame—along with one Desi Cow Ghee. This balanced selection, packed with nutrition and health benefits, is ideal for versatile cooking solutions. Personalise the kit as per your dietary needs and enjoy the benefits of wood-pressed oils in one convenient package.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text (Optional)",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link (Optional)"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#7A4926" /* A brown shade closer to your image example */
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Block",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

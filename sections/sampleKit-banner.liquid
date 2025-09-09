@@ -1,0 +1,261 @@
+
+
+{% assign desktop_banner_image = section.settings.banner_image %}
+{% assign mobile_banner_image = section.settings.mobile_banner_image %}
+{% assign banner_heading = section.settings.banner_heading %}
+{% assign banner_description = section.settings.banner_description %}
+{% assign banner_button_text = section.settings.banner_button_text %}
+{% assign banner_button_link = section.settings.banner_button_link %}
+
+{% if desktop_banner_image != blank %}
+  <div class="custom-banner-section custom-banner-{{ section.id }}">
+    <div class="custom-banner-image-wrapper">
+      <picture>
+       
+        {% if mobile_banner_image != blank %}
+          <source media="(max-width: 768px)"
+                  srcset="{{ mobile_banner_image | image_url: width: 768 }}">
+        {% endif %}
+       
+        <img src="{{ desktop_banner_image | image_url: width: 1920 }}"
+             alt="{{ banner_heading | escape }}"
+             loading="lazy"
+             width="{{ desktop_banner_image.width }}"
+             height="{{ desktop_banner_image.height }}">
+      </picture>
+    </div>
+
+    <div class="">
+      {% if banner_heading != blank %}
+        <h2 class="custom-banner-heading">{{ banner_heading }}</h2>
+      {% endif %}
+
+      {% if banner_description != blank %}
+        <p class="custom-banner-description">{{ banner_description }}</p>
+      {% endif %}
+
+      {% if banner_button_text != blank and banner_button_link != blank %}
+        <a href="{{ banner_button_link }}" class="custom-banner-button">
+          {{ banner_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <div class="custom-banner-section custom-banner-placeholder custom-banner-{{ section.id }}">
+    <div class="custom-banner-overlay">
+      <h2 class="custom-banner-heading">Your Awesome Banner</h2>
+      <p class="custom-banner-description">Upload a desktop and/or mobile image and customize your text in the Theme Customizer!</p>
+      <a href="#" class="custom-banner-button">Shop Now</a>
+    </div>
+  </div>
+{% endif %}
+
+{% style %}
+  /* Custom Banner Styling for section {{ section.id }} */
+  .custom-banner-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #f8f8f8; /* Fallback background in case of transparent image */
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-image-wrapper {
+    width: 100%;
+    /* Remove padding-bottom for aspect ratio, let image define height */
+    height: auto; /* Adjust height based on content */
+    display: flex; /* Use flex to center image if it's smaller */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 200px; /* Minimum height to ensure visibility even with small images */
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-image-wrapper img {
+    width: 100%;
+    height: auto; /* Image's natural height */
+    object-fit: contain; /* Ensures the entire image is visible, no cropping */
+    object-position: center;
+    display: block;
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity }}); /* Dynamic overlay opacity */
+    color: {{ section.settings.text_color }}; /* Dynamic text color */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-heading {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-description {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    max-width: 70%;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-button {
+    display: inline-block;
+    background-color: {{ section.settings.button_bg_color }}; /* Dynamic button colors */
+    color: {{ section.settings.button_text_color }};
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .custom-banner-{{ section.id }} .custom-banner-button:hover {
+    background-color: {{ section.settings.button_bg_color | color_darken: 10 }}; /* Darken on hover */
+    transform: translateY(-2px);
+  }
+
+  .custom-banner-placeholder {
+    background-color: #ffe0e0;
+    color: #c00;
+    border: 1px dashed #c00;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 1024px) {
+    .custom-banner-{{ section.id }} .custom-banner-heading {
+      font-size: 2.8em;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-description {
+      font-size: 1.3em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    /* For smaller screens, the image's height will still be auto, based on the mobile image */
+    .custom-banner-{{ section.id }} .custom-banner-heading {
+      font-size: 2em;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-description {
+      font-size: 1.1em;
+      max-width: 90%;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-button {
+      padding: 10px 20px;
+      font-size: 1em;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .custom-banner-{{ section.id }} .custom-banner-heading {
+      font-size: 1.5em;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-description {
+      font-size: 0.9em;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-overlay {
+        padding: 10px;
+    }
+    .custom-banner-{{ section.id }} .custom-banner-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Custom Image Banner",
+  "tag": "section",
+  "class": "section-custom-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Desktop Banner Image",
+      "info": "Upload the main banner background image for desktop screens."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner_image",
+      "label": "Mobile Banner Image (Optional)",
+      "info": "Upload a specific background image for mobile screens (max-width: 768px). If left blank, the Desktop Banner Image will be used."
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "Your Hero Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_description",
+      "label": "Banner Description",
+      "default": "Compelling message that encourages action."
+    },
+    {
+      "type": "text",
+      "id": "banner_button_text",
+      "label": "Button Text (Optional)",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "banner_button_link",
+      "label": "Button Link (Optional)"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.1,
+      "label": "Overlay Opacity",
+      "default": 0.4,
+      "info": "Adjust the transparency of the dark overlay over the image."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#007bff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner with Text",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,227 @@
+<div class="video-details-section">
+  <div class="container">
+    <div class="grid grid--1x2">
+      <div class="grid__item video-column">
+        {% if section.settings.video_url != blank %}
+          <div class="video-wrapper">
+            <iframe
+              src="{{ section.settings.video_url }}"
+              src="{{ autoplay_url }}"
+              title="{{ section.settings.video_title | escape }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        {% else %}
+          <p>{{ 'sections.video-with-details.settings.video_placeholder' | t }}</p>
+        {% endif %}
+      </div>
+
+      <div class="grid__item details-column">
+        {% if section.settings.title != blank %}
+          <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <div class="section-description">{{ section.settings.description }}</div>
+        {% endif %}
+
+        <div class="icon-cards">
+          {% for block in section.blocks %}
+            <div class="icon-card">
+              {% if block.settings.icon_image != blank %}
+                <div class="icon">
+                  {% assign image = block.settings.icon_image %}
+                  {{ image | image_url: width: 50 | image_tag: class: 'icon-image' }}
+                </div>
+              {% endif %}
+              {% if block.settings.card_title != blank %}
+                <h3 class="card-title">{{ block.settings.card_title | escape }}</h3>
+              {% endif %}
+              {% if block.settings.card_text != blank %}
+                <p class="card-text">{{ block.settings.card_text }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video with Details",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "Paste your YouTube or Vimeo embed URL here."
+    },
+    {
+      "type": "text",
+      "id": "video_title",
+      "label": "Video Title (for accessibility)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_card",
+      "name": "Icon Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title"
+        },
+        {
+          "type": "richtext",
+          "id": "card_text",
+          "label": "Card Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video with Details",
+      "blocks": [
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.video-details-section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.container {
+  max-width: 1400px; /* Adjust as needed for your desired container width */
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 30px; /* Adjust the gap between columns */
+}
+
+.grid--1x2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.video-column {
+  /* Styles for the video column */
+}
+
+.video-wrapper {
+  aspect-ratio: 16 / 9; /* Standard video aspect ratio */
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.details-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+}
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 2em; /* Adjust as needed */
+  display: flex;
+    justify-content: center;
+}
+
+.section-description {
+  margin-bottom: 20px;
+}
+
+.icon-cards {
+  display: flex;
+  flex-wrap: wrap;
+ margin: 0 auto;
+}
+
+.icon-card {
+  flex: 1 1 1 200px; /* Adjust the minimum width of the cards */
+  padding: 20px; 
+  text-align: center;
+}
+
+.icon {
+  margin-bottom: 10px;
+}
+
+.icon-image {
+  max-width: 50px; /* Adjust the maximum width of the icon image */
+  height: auto;
+  display: block; /* Prevent extra space below inline images */
+  margin: 0 auto; /* Center the image within the icon div */
+}
+
+.card-title {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.card-text {
+  font-size: 0.9em;
+  color: #555;
+}
+
+@media screen and (max-width: 990px) {
+  .grid--1x2 {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+
+  .video-details-section .grid__item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .details-column {
+    margin-top: 20px; /* Add some space above the details on smaller screens */
+  }
+
+  .icon-cards {
+    flex-direction: column; /* Stack cards on smaller screens */
+  }
+}
+{% endstylesheet %}

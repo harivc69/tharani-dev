@@ -1,0 +1,369 @@
+<div class="shop-by-category-section">
+  <div class="section-header">
+    <p class="section-subheader">{{ section.settings.subheader_text }}</p>
+    <h2 class="section-title">{{ section.settings.title_text }}</h2>
+    <div class="divider">&nbsp;</div>
+  </div>
+
+  <div class="slider-wrapper">
+    <button class="slider-arrow left-arrow" aria-label="Previous">&larr;</button>
+    <div class="slider-container">
+      <div class="categories-slider">
+        {% for block in section.blocks %}
+          <div class="category-item-shop">
+            <div class="category-circle-wrapper">
+              <div class="category-default-state">
+                {% if block.settings.icon != blank %}
+                  <img src="{{ block.settings.icon | image_url: width: 150 }}" alt="{{ block.settings.default_title }}" class="category-icon-shop">
+                {% endif %}
+              </div>
+              <div class="category-hover-state">
+                <h3 class="category-hover-title">{{ block.settings.hover_title }}</h3>
+                {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                  <a href="{{ block.settings.button_url }}" class="shop-button">{{ block.settings.button_text }}</a>
+                {% endif %}
+              </div>
+            </div>
+            <p class="category-default-title">{{ block.settings.default_title }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <button class="slider-arrow right-arrow" aria-label="Next">&rarr;</button>
+  </div>
+</div>
+
+<style>
+.shop-by-category-section {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #fcfaf7;
+}
+.section-subheader {
+  font-size: 11px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #3C1615;
+}
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: #3C1615;
+  margin: 10px auto !important;
+}
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.slider-container {
+  overflow: hidden;
+  max-width: calc(250px * 4 + 30px * 3); /* 4 items + 3 gaps */
+  margin: 0 auto;
+}
+.categories-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.categories-slider::-webkit-scrollbar {
+  display: none;
+}
+.slider-arrow {
+  background: #3C1615;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;  
+  z-index: 1;
+  transition: background 0.3s;
+}
+.slider-arrow:hover {
+  background: #59230A;
+}
+.category-item-shop {
+  min-width: 250px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.category-circle-wrapper {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 3px solid #59230A;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: border 1s ease, background-color 1s ease;
+}
+.category-default-state, .category-hover-state {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+.category-default-state {
+  transition: opacity 1s ease, visibility 1s ease;
+}
+.category-hover-state {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
+}
+.category-hover-title {
+  font-size: 1.2em;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+  min-width: 250px;
+}
+.shop-button {
+  display: inline-block;
+  background-color: #3c1615;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.shop-button:hover {
+  background-color: #59230A;
+}
+.category-item-shop:hover .category-circle-wrapper {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+.category-item-shop:hover .category-default-state {
+  opacity: 0;
+  visibility: hidden;
+}
+.category-item-shop:hover .category-hover-state {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.category-item-shop:hover .category-default-title {
+  opacity: 0;
+  visibility: hidden;
+}
+.category-icon-shop {
+  object-fit: contain;
+}
+.category-default-title {
+  font-size: 0.8em;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 10px;
+  text-align: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+@media (max-width: 1024px) {
+  .slider-container {
+    max-width: calc(250px * 3 + 30px * 2); /* Show 3 on tablets */
+  }
+}
+@media (max-width: 768px) {
+  .slider-container {
+    max-width: calc(250px * 2 + 30px); /* Show 2 on mobile landscape */
+  }
+  .category-circle-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+  .section-title {
+    font-size: 2em;
+  }
+  .category-hover-title {
+    font-size: 1.2em;
+  }
+  .shop-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+}
+@media (max-width: 480px) {
+  .slider-container {
+    max-width: 250px; /* Show 1 on small phones */
+  }
+  .category-circle-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  .shop-by-category-section {
+    padding: 40px 15px;
+  }
+  .category-item-shop {
+    padding-bottom: 15px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slider = document.querySelector('.categories-slider');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
+  const itemWidth = slider.querySelector('.category-item-shop').offsetWidth + 30;
+  let autoSlideOn = {{ section.settings.auto_slide | default: false | json }};
+  let autoSlideInterval;
+
+  function scrollSlider(direction) {
+    slider.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+
+  leftArrow.addEventListener('click', () => scrollSlider(-1));
+  rightArrow.addEventListener('click', () => scrollSlider(1));
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => scrollSlider(1), 3000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  if (autoSlideOn) {
+    startAutoSlide();
+  }
+
+  slider.addEventListener('mouseover', stopAutoSlide);
+  slider.addEventListener('mouseout', () => {
+    if (autoSlideOn) startAutoSlide();
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Category Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheader_text",
+      "label": "Subheader Text",
+      "default": "Eat Wise For Healthy Life"
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_slide",
+      "label": "Enable Auto Slide",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Category Icon"
+        },
+        {
+          "type": "text",
+          "id": "default_title",
+          "label": "Default Title",
+          "default": "Authentic Wood Pressed Oils"
+        },
+        {
+          "type": "text",
+          "id": "hover_title",
+          "label": "Hover Title",
+          "default": "Authentic Wood Pressed Oils"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Category (Slider)",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "default_title": "Authentic Wood Pressed Oils",
+            "hover_title": "Authentic Wood Pressed Oils",
+            "button_text": "Shop",
+            "button_url": "/collections/oils"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "default_title": "Health-giving Flour",
+            "hover_title": "Health-giving Flour",
+            "button_text": "Shop",
+            "button_url": "/collections/flour"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "default_title": "Naturally-source Jaggery and Sugar",
+            "hover_title": "Naturally-source Jaggery and Sugar",
+            "button_text": "Shop",
+            "button_url": "/collections/jaggery-sugar"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "default_title": "Nourishing Rice and Pulses",
+            "hover_title": "Nourishing Rice and Pulses",
+            "button_text": "Shop",
+            "button_url": "/collections/rice-pulses"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

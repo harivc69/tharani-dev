@@ -1,0 +1,286 @@
+{% schema %}
+{
+  "name": "Benefits and Uses",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "benefits_title",
+      "label": "Benefits Section Title",
+      "default": "Benefits"
+    },
+    {
+      "type": "text",
+      "id": "uses_title",
+      "label": "Uses Section Title",
+      "default": "Uses"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (px)",
+      "min": 500,
+      "max": 1920,
+      "step": 20,
+      "default": 1200
+    },
+    {
+      "type": "checkbox",
+      "id": "center_container",
+      "label": "Center Container",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_card",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Detailed benefit description goes here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "use_card",
+      "name": "Use Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Use Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Detailed use description goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits and Uses",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="benefits-uses-section">
+  <div class="container" style="max-width: {{ section.settings.container_width }}px; {% if section.settings.center_container %}margin-left: auto; margin-right: auto;{% endif %}">
+
+    {% if section.settings.banner_image %}
+      <div class="banner">
+        <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{{ section.settings.banner_image.alt | escape }}">
+      </div>
+    {% endif %}
+
+   
+
+{% assign benifits = product.metafields.custom.benifits.value %}
+
+{% if benifits %}
+  <h2 class="benifits-title">Benefits</h2>
+  <ul class="benifits-cards">
+    {% for benefit in benifits %}
+      <li class="individual-card">
+         <img src="{{ benefit.benifit_image | image_url: width: 200 }}">
+       <div>
+          <strong>{{ benefit.benifit_name }}</strong><br>       
+        {{ benefit.benifit_desription }}
+       </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p></p>
+{% endif %}
+
+  </div>
+</div>
+
+
+{% stylesheet %}
+  .benifits-title {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.benifits-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.individual-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: calc(33.333% - 20px); /* Ensures 3 per row with gap */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  background-color: #fff;
+}
+.individual-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.benefits-uses-section .banner {
+  margin-bottom: 20px;
+}
+
+.benefits-uses-section .banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.collapsible-tabs .tab-header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.collapsible-tabs .tab-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 20px;
+    font-weight: 800;
+}
+
+.collapsible-tabs .tab-button .arrow-icon {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+  transition: transform 0.3s ease-in-out;
+}
+
+.collapsible-tabs .tab-button[aria-expanded="true"] .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-tabs .tab-content {
+  padding: 15px;
+}
+
+.benefits-uses-section .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax width */
+  gap: 20px;
+}
+
+.benefits-uses-section .card {
+  border: 1px solid #eee;
+  padding: 15px;
+  display: flex; /* Enable flexbox for icon and content */
+  flex-direction:row !important;
+  align-items: center; /* Align items vertically at the top */
+}
+
+.benefits-uses-section .card-icon {
+  margin-right: 15px; /* Space between icon and content */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.benefits-uses-section .card-icon img {
+  max-width: 40px; /* Adjust icon size */
+  height: auto;
+  display: block;
+}
+
+.benefits-uses-section .card-content {
+  flex-grow: 1; /* Allow content to take remaining space */
+}
+
+.benefits-uses-section .card h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.benefits-uses-section .card-description {
+  font-size: 0.95em;
+  color: #555;
+}
+
+.benefits-section.below-banner,
+.uses-section.below-banner {
+  margin-top: 30px;
+}
+
+.benefits-section.below-banner h2,
+.uses-section.below-banner h2 {
+  margin-bottom: 15px;
+}
+{% endstylesheet %}
+
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function() {
+  const tabHeaders = document.querySelectorAll('.collapsible-tabs .tab-header');
+  const benefitsSectionBelow = document.querySelector('.benefits-section.below-banner');
+  const usesSectionBelow = document.querySelector('.uses-section.below-banner');
+
+  tabHeaders.forEach(header => {
+    const button = header.querySelector('.tab-button');
+    const contentId = button.getAttribute('aria-controls');
+    const content = document.getElementById(contentId);
+    const sectionBelow = (contentId === 'benefits-content') ? benefitsSectionBelow : usesSectionBelow;
+
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+      button.setAttribute('aria-expanded', !expanded);
+      content.hidden = expanded;
+      sectionBelow.style.display = expanded ? 'none' : 'block';
+    });
+  });
+
+  benefitsSectionBelow.style.display = 'none';
+  usesSectionBelow.style.display = 'none';
+});
+{% endjavascript %}

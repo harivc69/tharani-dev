@@ -1,0 +1,114 @@
+
+
+{% assign banner_source_image = section.settings.banner_image %}
+
+
+{% if template.name == 'collection' and collection.image != blank %}
+    {% assign banner_source_image = collection.image %}
+{% endif %}
+
+
+{% if banner_source_image != blank %}
+
+    <style>
+        /* Ensure the body font is Inter if not already defined by the theme */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Custom CSS for the banner height based on settings */
+        .banner-height-small { height: 250px; }
+        .banner-height-medium { height: 400px; }
+        .banner-height-large { height: 600px; }
+        .banner-height-fullscreen { height: 100vh; }
+
+        /* Responsive adjustments for heights */
+        @media (min-width: 768px) { /* md breakpoint */
+            .md\:banner-height-small { height: 300px; }
+            .md\:banner-height-medium { height: 500px; }
+            .md\:banner-height-large { height: 700px; }
+            .md\:banner-height-fullscreen { height: 100vh; }
+        }
+
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .lg\:banner-height-small { height: 350px; }
+            .lg\:banner-height-medium { height: 600px; }
+            .lg\:banner-height-large { height: 800px; }
+            .lg\:banner-height-fullscreen { height: 100vh; } 
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <section
+        class="relative w-full flex items-center justify-center overflow-hidden rounded-lg shadow-lg
+        {% case section.settings.banner_height %}
+            {% when 'small' %} banner-height-small md:banner-height-small lg:banner-height-small
+            {% when 'medium' %} banner-height-medium md:banner-height-medium lg:banner-height-medium
+            {% when 'large' %} banner-height-large md:banner-height-large lg:banner-height-large
+            {% when 'fullscreen' %} banner-height-fullscreen md:banner-height-fullscreen lg:banner-height-fullscreen
+            {% else %} banner-height-medium md:banner-height-medium lg:banner-height-medium /* Default */
+        {% endcase %}
+        "
+    >
+        <div
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out"
+            style="background-image: url('{{ banner_source_image | img_url: 'master' }}');"
+            role="img"
+            aria-label="{{ banner_source_image.alt | default: 'Banner image' }}"
+        >
+            
+            <picture>
+                <source
+                    media="(max-width: 767px)"
+                    srcset="{{ banner_source_image | img_url: '768x' }}"
+                >
+                <source
+                    media="(min-width: 768px) and (max-width: 1023px)"
+                    srcset="{{ banner_source_image | img_url: '1024x' }}"
+                >
+                <img
+                    src="{{ banner_source_image | img_url: 'master' }}"
+                    alt="{{ banner_source_image.alt | default: 'Banner image' }}"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                >
+            </picture>
+        </div>
+    </section>
+
+{% endif %} 
+
+{% schema %}
+{
+    "name": "Responsive Banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner Image (Fallback/Default)",
+            "info": "Upload a general banner image. This will be used if no collection image is available or if this section is added to non-collection pages. If neither this nor a collection image is set, the banner will not display."
+        },
+        {
+            "type": "select",
+            "id": "banner_height",
+            "label": "Banner Height",
+            "options": [
+                { "value": "small", "label": "Small" },
+                { "value": "medium", "label": "Medium" },
+                { "value": "large", "label": "Large" },
+                { "value": "fullscreen", "label": "Full Screen" }
+            ],
+            "default": "medium",
+            "info": "Choose the height of the banner section. 'Full Screen' will take up the entire viewport height."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Responsive Banner",
+            "category": "Image"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,725 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "logo": "shopify://shop_images/thrnilogo.webp",
+    "logo_width": 300,
+    "favicon": "shopify://shop_images/Fav_Icon-01.png",
+    "enable-wishlist": false,
+    "wishlist-floating-button-position": false,
+    "type_header_font": "assistant_n4",
+    "heading_scale": 100,
+    "type_body_font": "assistant_n4",
+    "body_scale": 100,
+    "page_width": 1200,
+    "spacing_sections": 0,
+    "spacing_grid_horizontal": 8,
+    "spacing_grid_vertical": 8,
+    "animations_reveal_on_scroll": true,
+    "animations_hover_elements": "none",
+    "buttons_border_thickness": 1,
+    "buttons_border_opacity": 100,
+    "buttons_radius": 0,
+    "buttons_shadow_opacity": 0,
+    "buttons_shadow_horizontal_offset": 0,
+    "buttons_shadow_vertical_offset": 4,
+    "buttons_shadow_blur": 5,
+    "variant_pills_border_thickness": 1,
+    "variant_pills_border_opacity": 55,
+    "variant_pills_radius": 40,
+    "variant_pills_shadow_opacity": 0,
+    "variant_pills_shadow_horizontal_offset": 0,
+    "variant_pills_shadow_vertical_offset": 4,
+    "variant_pills_shadow_blur": 5,
+    "inputs_border_thickness": 1,
+    "inputs_border_opacity": 55,
+    "inputs_radius": 0,
+    "inputs_shadow_opacity": 0,
+    "inputs_shadow_horizontal_offset": 0,
+    "inputs_shadow_vertical_offset": 4,
+    "inputs_shadow_blur": 5,
+    "card_style": "standard",
+    "card_image_padding": 0,
+    "card_text_alignment": "left",
+    "card_color_scheme": "scheme-2",
+    "card_border_thickness": 0,
+    "card_border_opacity": 10,
+    "card_corner_radius": 0,
+    "card_shadow_opacity": 0,
+    "card_shadow_horizontal_offset": 0,
+    "card_shadow_vertical_offset": 4,
+    "card_shadow_blur": 5,
+    "collection_card_style": "standard",
+    "collection_card_image_padding": 0,
+    "collection_card_text_alignment": "left",
+    "collection_card_color_scheme": "scheme-2",
+    "collection_card_border_thickness": 0,
+    "collection_card_border_opacity": 10,
+    "collection_card_corner_radius": 0,
+    "collection_card_shadow_opacity": 0,
+    "collection_card_shadow_horizontal_offset": 0,
+    "collection_card_shadow_vertical_offset": 4,
+    "collection_card_shadow_blur": 5,
+    "blog_card_style": "standard",
+    "blog_card_image_padding": 0,
+    "blog_card_text_alignment": "left",
+    "blog_card_color_scheme": "scheme-2",
+    "blog_card_border_thickness": 0,
+    "blog_card_border_opacity": 10,
+    "blog_card_corner_radius": 0,
+    "blog_card_shadow_opacity": 0,
+    "blog_card_shadow_horizontal_offset": 0,
+    "blog_card_shadow_vertical_offset": 4,
+    "blog_card_shadow_blur": 5,
+    "text_boxes_border_thickness": 0,
+    "text_boxes_border_opacity": 10,
+    "text_boxes_radius": 0,
+    "text_boxes_shadow_opacity": 0,
+    "text_boxes_shadow_horizontal_offset": 0,
+    "text_boxes_shadow_vertical_offset": 4,
+    "text_boxes_shadow_blur": 5,
+    "media_border_thickness": 1,
+    "media_border_opacity": 5,
+    "media_radius": 0,
+    "media_shadow_opacity": 0,
+    "media_shadow_horizontal_offset": 0,
+    "media_shadow_vertical_offset": 4,
+    "media_shadow_blur": 5,
+    "popup_border_thickness": 1,
+    "popup_border_opacity": 10,
+    "popup_corner_radius": 0,
+    "popup_shadow_opacity": 5,
+    "popup_shadow_horizontal_offset": 0,
+    "popup_shadow_vertical_offset": 4,
+    "popup_shadow_blur": 5,
+    "drawer_border_thickness": 1,
+    "drawer_border_opacity": 10,
+    "drawer_shadow_opacity": 0,
+    "drawer_shadow_horizontal_offset": 0,
+    "drawer_shadow_vertical_offset": 4,
+    "drawer_shadow_blur": 5,
+    "badge_position": "bottom left",
+    "badge_corner_radius": 40,
+    "sale_badge_color_scheme": "scheme-4",
+    "sold_out_badge_color_scheme": "scheme-3",
+    "brand_headline": "",
+    "brand_description": "<p></p>",
+    "brand_image_width": 100,
+    "social_facebook_link": "",
+    "social_instagram_link": "",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
+    "social_vimeo_link": "",
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "currency_code_enabled": true,
+    "cart_type": "notification",
+    "show_vendor": false,
+    "show_cart_note": false,
+    "cart_drawer_collection": "",
+    "cart_color_scheme": "scheme-1",
+    "sections": {
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "scheme-1"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slide_HXbQkR": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify://shop_images/DSC4540.webp",
+              "image_overlay_opacity": 50,
+              "heading": "<strong>OUR MISSION</strong>",
+              "heading_size": "h2",
+              "subheading": "Being Your Trustworthy and Transparent Food Partner",
+              "subheading_secondary": "Another line of text here",
+              "button_label": "",
+              "link": "",
+              "button_style_secondary": false,
+              "show_text_box": false,
+              "box_align": "middle-center",
+              "text_alignment": "center",
+              "text_alignment_mobile": "center",
+              "color_scheme": "scheme-1"
+            }
+          }
+        },
+        "block_order": [
+          "slide_HXbQkR"
+        ],
+        "settings": {
+          "layout": "full_bleed",
+          "slide_height": "medium",
+          "slider_visual": "counter",
+          "auto_rotate": false,
+          "change_slides_speed": 5,
+          "image_behavior": "none",
+          "show_text_below": true,
+          "accessibility_info": "Slideshow about our brand"
+        }
+      },
+      "home-testmonial": {
+        "type": "home-testmonial",
+        "blocks": {
+          "testimonial_zfNmxK": {
+            "type": "testimonial",
+            "settings": {
+              "image_top": "shopify://shop_images/passion.webp",
+              "name_top": "Passionate Professionals",
+              "name": "",
+              "review": "Our passionate team believes in the principle of health, ecology, and care and ensures to work directly with a large number of farmers who do not use pesticides or GMOs to grow crops.",
+              "stars": 0
+            }
+          },
+          "testimonial_BVxVhx": {
+            "type": "testimonial",
+            "settings": {
+              "image_top": "shopify://shop_images/nutrit.webp",
+              "name_top": "Aayushi Khandelwal",
+              "name": "",
+              "review": "Taste that stays with you from Mother Nature Itself. With a blend of traditional sourcing and innovative technology, we aim and assure to give our customers a healthy meal, full of nutrition and free of chemicals.",
+              "stars": 0
+            }
+          },
+          "testimonial_Nzi47K": {
+            "type": "testimonial",
+            "settings": {
+              "image_top": "shopify://shop_images/prot.webp",
+              "name_top": "Preserves the Environment",
+              "name": "",
+              "review": "Positive impact on plant and planet. Conscious of business practices and healthy living, we support sustainable farming that will ensure enhanced soil conservation and reduced air pollution to support the vibrancy of the planet and the livelihood of communities.",
+              "stars": 0
+            }
+          }
+        },
+        "block_order": [
+          "testimonial_zfNmxK",
+          "testimonial_BVxVhx",
+          "testimonial_Nzi47K"
+        ],
+        "settings": {
+          "heading": "Tharani is created with the culmination of 3 P’s,",
+          "subheading": "Young and agile graduates from IIT Guwahati wanted to use their technical skills in the food and agriculture industry. They have the vision to bring food processing to the farm level and provide traditional superfoods to everyone.",
+          "description": "",
+          "section_class": "our-story-founder"
+        }
+      },
+      "image-content": {
+        "type": "image-content",
+        "blocks": {
+          "card_RgnmLt": {
+            "type": "card",
+            "settings": {
+              "card_title": "18+",
+              "card_content": "<p>Food Micro-Entrepreneurs<br/><br/></p>",
+              "card_button_label": "",
+              "card_button_link": "shopify://products/castor-oil-50ml"
+            }
+          },
+          "card_nKbWx9": {
+            "type": "card",
+            "settings": {
+              "card_title": "5000+",
+              "card_content": "<p>Community of Farmers</p>",
+              "card_button_label": "",
+              "card_button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "card_RgnmLt",
+          "card_nKbWx9"
+        ],
+        "settings": {
+          "heading": "Who We Are?",
+          "subheading": "Tharani is your one-stop destination for India’s best authentic food products. We are one of the direct-to-consumer brands, offering a wide collection of best quality food products. Our foods are free from preservatives and are strictly quality-controlled and independently verified.",
+          "button_label": "",
+          "button_link": "",
+          "image": "shopify://shop_images/DSF3904_2.jpg"
+        }
+      },
+      "imageLeft-contentright": {
+        "type": "imageLeft-contentright",
+        "blocks": {
+          "feature_point_9zWTMn": {
+            "type": "feature_point",
+            "settings": {
+              "card_title": "✅ Traditional Methods, Minimal Processing",
+              "card_content": "<p>We honor age-old practices to retain the original essence of food. Our products are gently processed using traditional techniques, ensuring the natural nutrients, aroma, and flavors remain untouched — just the way nature intended.<br/></p>",
+              "card_button_label": "",
+              "card_button_link": ""
+            }
+          },
+          "feature_point_Tn6xPG": {
+            "type": "feature_point",
+            "settings": {
+              "card_title": "👩‍🌾 Crafted by Rural Farmer Families",
+              "card_content": "<p>Every item is handmade with care by dedicated farmer families in our villages. By choosing us, you're not just buying pure food — you're directly supporting local micro-entrepreneurs and helping uplift rural livelihoods.<br/><br/><br/></p>",
+              "card_button_label": "",
+              "card_button_link": ""
+            }
+          },
+          "feature_point_ezQ74w": {
+            "type": "feature_point",
+            "settings": {
+              "card_title": "📦 Transparent Farm-to-Fork Journey",
+              "card_content": "<p>We believe you deserve to know where your food comes from. Our tech-enabled supply chain tracks every step — from sourcing to delivery — with rigorous quality checks. Each batch is tested in our in-house certified labs to ensure purity and safety.<br/><br/><br/></p>",
+              "card_button_label": "",
+              "card_button_link": ""
+            }
+          },
+          "feature_point_w9H83z": {
+            "type": "feature_point",
+            "settings": {
+              "card_title": "🌾 Authentic, Wholesome Goodness",
+              "card_content": "<p>No chemicals. No preservatives. No shortcuts. We bring you real food in its purest form — straight from the farm to your table, the way your ancestors would’ve approved.<br/><br/></p>",
+              "card_button_label": "",
+              "card_button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "feature_point_9zWTMn",
+          "feature_point_Tn6xPG",
+          "feature_point_ezQ74w",
+          "feature_point_w9H83z"
+        ],
+        "settings": {
+          "heading": "🌿 What Makes Us Unique?",
+          "subheading": "",
+          "button_label": "",
+          "button_link": "",
+          "image": "shopify://shop_images/DSF4259-2.jpg"
+        }
+      },
+      "our-story-2ndslider": {
+        "type": "our-story-2ndslider",
+        "blocks": {
+          "slide_EHQjNB": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/suppl-chain02.webp"
+            }
+          },
+          "slide_PrAFNj": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "image": "shopify://shop_images/suppl-chain01.webp"
+            }
+          }
+        },
+        "block_order": [
+          "slide_EHQjNB",
+          "slide_PrAFNj"
+        ],
+        "settings": {
+          "heading": "",
+          "autoplay": true,
+          "autoplay_speed": 4
+        }
+      },
+      "usp": {
+        "type": "usp",
+        "settings": {}
+      },
+      "our-story-video": {
+        "type": "our-story-video",
+        "settings": {
+          "section_heading": "Our Journey So Far",
+          "youtube_url": "https://youtu.be/nqQn2ReKgCc"
+        }
+      },
+      "our-story-1stslider": {
+        "type": "our-story-1stslider",
+        "blocks": {
+          "slide_zxnh6B": {
+            "type": "slide",
+            "settings": {
+              "background_image": "shopify://shop_images/bnrc3.webp",
+              "heading": "OUR MISSION",
+              "subheading": "Being Your Trustworthy and Transparent Food Partner",
+              "description": "",
+              "button_text": "Shop Now",
+              "button_link": "",
+              "text_alignment": "custom_text_center",
+              "text_color": "#000000",
+              "overlay_opacity": 100
+            }
+          }
+        },
+        "block_order": [
+          "slide_zxnh6B"
+        ],
+        "settings": {
+          "slider_autoplay": 2,
+          "show_dots": true,
+          "show_arrows": true
+        }
+      },
+      "sampleKit-banner": {
+        "type": "sampleKit-banner",
+        "settings": {
+          "banner_image": "shopify://shop_images/Main-banner.webp",
+          "mobile_banner_image": "shopify://shop_images/Little_Millet_Rice_Sama_Same_-2.webp",
+          "banner_heading": "",
+          "banner_description": "",
+          "banner_button_text": "Shop Now",
+          "banner_button_link": "",
+          "overlay_opacity": 0.4,
+          "text_color": "#ffffff",
+          "button_bg_color": "#007bff",
+          "button_text_color": "#ffffff"
+        }
+      },
+      "sampleKit-rightContent-LeftImageSection": {
+        "type": "sampleKit-rightContent-LeftImageSection",
+        "settings": {
+          "background_color": "#f9f9f9",
+          "image_position": "left",
+          "section_image": "shopify://shop_images/oils-sample-kit1.webp",
+          "subheading": "Nature's Nourish Woodpressed Oils",
+          "heading": "Embrace Nature's Goodness with Our Premium Woodpressed Oils & Ghee.",
+          "description": "<p>With this exclusive combo kit, you can select 4 out of 6 premium wood-pressed oils—Groundnut, Safflower, Sunflower, Mustard, Coconut, and Sesame—along with one Desi Cow Ghee. This balanced selection, packed with nutrition and health benefits, is ideal for versatile cooking solutions. Personalise the kit as per your dietary needs and enjoy the benefits of wood-pressed oils in one convenient package.</p>",
+          "button_text": "Shop Now",
+          "button_link": "shopify://collections/sample-kit-1",
+          "text_alignment": "left",
+          "subheading_color": "#555555",
+          "heading_color": "#333333",
+          "description_color": "#666666",
+          "button_bg_color": "#7a4926",
+          "button_text_color": "#ffffff"
+        }
+      },
+      "sampleKit-rightImage-leftContentSection": {
+        "type": "sampleKit-rightImage-leftContentSection",
+        "settings": {
+          "background_color": "#f9f9f9",
+          "image_position": "left",
+          "section_image": "shopify://shop_images/Sample_Kit2.webp",
+          "subheading": "Nature's Nourish Woodpressed Oils",
+          "heading": "Embrace Nature's Goodness with Our Premium Woodpressed Oils & Ghee.",
+          "description": "<p>With this exclusive combo kit, you can select 4 out of 6 premium wood-pressed oils—Groundnut, Safflower, Sunflower, Mustard, Coconut, and Sesame—along with one Desi Cow Ghee. This balanced selection, packed with nutrition and health benefits, is ideal for versatile cooking solutions. Personalise the kit as per your dietary needs and enjoy the benefits of wood-pressed oils in one convenient package.</p>",
+          "button_text": "Shop Now",
+          "button_link": "shopify://collections/sample-kit-2",
+          "text_alignment": "left",
+          "subheading_color": "#555555",
+          "heading_color": "#333333",
+          "description_color": "#666666",
+          "button_bg_color": "#7a4926",
+          "button_text_color": "#ffffff"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "13375938897875554821": {
+        "type": "shopify://apps/qikify-sales-pop-up/blocks/app-embed/688dd516-1cdc-4008-8329-23089a1c4e24",
+        "disabled": false,
+        "settings": {}
+      },
+      "11602427681468245405": {
+        "type": "shopify://apps/popcoins-loyalty/blocks/pop_coin_embed/2acb92d2-27d3-4944-9c0b-1997383d692f",
+        "disabled": false,
+        "settings": {}
+      },
+      "11215481370727440462": {
+        "type": "shopify://apps/popcoins-loyalty/blocks/pop_coin_embed_sit/2acb92d2-27d3-4944-9c0b-1997383d692f",
+        "disabled": false,
+        "settings": {}
+      },
+      "18378115731771045039": {
+        "type": "shopify://apps/miniorange-otp-login-register/blocks/otp-login-popup/dba67ab6-2825-41e1-83fd-7500e426945d",
+        "disabled": false,
+        "settings": {}
+      },
+      "246967388992510375": {
+        "type": "shopify://apps/msg91/blocks/app-embed/a23a396c-1b96-4cfa-80d4-96656b7dcfbc",
+        "disabled": false,
+        "settings": {}
+      }
+    },
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#f3f3f3",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#f3f3f3",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#242833",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#000000",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#121212",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#121212",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#334fb4",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#334fb4",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "logo_width": 90,
+      "color_schemes": {
+        "scheme-1": {
+          "settings": {
+            "background": "#FFFFFF",
+            "background_gradient": "",
+            "text": "#121212",
+            "button": "#121212",
+            "button_label": "#FFFFFF",
+            "secondary_button_label": "#121212",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-2": {
+          "settings": {
+            "background": "#F3F3F3",
+            "background_gradient": "",
+            "text": "#121212",
+            "button": "#121212",
+            "button_label": "#F3F3F3",
+            "secondary_button_label": "#121212",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-3": {
+          "settings": {
+            "background": "#242833",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#000000",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-4": {
+          "settings": {
+            "background": "#121212",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#121212",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        },
+        "scheme-5": {
+          "settings": {
+            "background": "#334FB4",
+            "background_gradient": "",
+            "text": "#FFFFFF",
+            "button": "#FFFFFF",
+            "button_label": "#334FB4",
+            "secondary_button_label": "#FFFFFF",
+            "shadow": "#121212"
+          }
+        }
+      },
+      "type_header_font": "assistant_n4",
+      "heading_scale": 100,
+      "type_body_font": "assistant_n4",
+      "body_scale": 100,
+      "page_width": 1200,
+      "spacing_sections": 0,
+      "spacing_grid_horizontal": 8,
+      "spacing_grid_vertical": 8,
+      "animations_reveal_on_scroll": true,
+      "animations_hover_elements": "none",
+      "buttons_border_thickness": 1,
+      "buttons_border_opacity": 100,
+      "buttons_radius": 0,
+      "buttons_shadow_opacity": 0,
+      "buttons_shadow_horizontal_offset": 0,
+      "buttons_shadow_vertical_offset": 4,
+      "buttons_shadow_blur": 5,
+      "variant_pills_border_thickness": 1,
+      "variant_pills_border_opacity": 55,
+      "variant_pills_radius": 40,
+      "variant_pills_shadow_opacity": 0,
+      "variant_pills_shadow_horizontal_offset": 0,
+      "variant_pills_shadow_vertical_offset": 4,
+      "variant_pills_shadow_blur": 5,
+      "inputs_border_thickness": 1,
+      "inputs_border_opacity": 55,
+      "inputs_radius": 0,
+      "inputs_shadow_opacity": 0,
+      "inputs_shadow_horizontal_offset": 0,
+      "inputs_shadow_vertical_offset": 4,
+      "inputs_shadow_blur": 5,
+      "card_style": "standard",
+      "card_image_padding": 0,
+      "card_text_alignment": "left",
+      "card_color_scheme": "scheme-2",
+      "card_border_thickness": 0,
+      "card_border_opacity": 10,
+      "card_corner_radius": 0,
+      "card_shadow_opacity": 0,
+      "card_shadow_horizontal_offset": 0,
+      "card_shadow_vertical_offset": 4,
+      "card_shadow_blur": 5,
+      "collection_card_style": "standard",
+      "collection_card_image_padding": 0,
+      "collection_card_text_alignment": "left",
+      "collection_card_color_scheme": "scheme-2",
+      "collection_card_border_thickness": 0,
+      "collection_card_border_opacity": 10,
+      "collection_card_corner_radius": 0,
+      "collection_card_shadow_opacity": 0,
+      "collection_card_shadow_horizontal_offset": 0,
+      "collection_card_shadow_vertical_offset": 4,
+      "collection_card_shadow_blur": 5,
+      "blog_card_style": "standard",
+      "blog_card_image_padding": 0,
+      "blog_card_text_alignment": "left",
+      "blog_card_color_scheme": "scheme-2",
+      "blog_card_border_thickness": 0,
+      "blog_card_border_opacity": 10,
+      "blog_card_corner_radius": 0,
+      "blog_card_shadow_opacity": 0,
+      "blog_card_shadow_horizontal_offset": 0,
+      "blog_card_shadow_vertical_offset": 4,
+      "blog_card_shadow_blur": 5,
+      "text_boxes_border_thickness": 0,
+      "text_boxes_border_opacity": 10,
+      "text_boxes_radius": 0,
+      "text_boxes_shadow_opacity": 0,
+      "text_boxes_shadow_horizontal_offset": 0,
+      "text_boxes_shadow_vertical_offset": 4,
+      "text_boxes_shadow_blur": 5,
+      "media_border_thickness": 1,
+      "media_border_opacity": 5,
+      "media_radius": 0,
+      "media_shadow_opacity": 0,
+      "media_shadow_horizontal_offset": 0,
+      "media_shadow_vertical_offset": 4,
+      "media_shadow_blur": 5,
+      "popup_border_thickness": 1,
+      "popup_border_opacity": 10,
+      "popup_corner_radius": 0,
+      "popup_shadow_opacity": 5,
+      "popup_shadow_horizontal_offset": 0,
+      "popup_shadow_vertical_offset": 4,
+      "popup_shadow_blur": 5,
+      "drawer_border_thickness": 1,
+      "drawer_border_opacity": 10,
+      "drawer_shadow_opacity": 0,
+      "drawer_shadow_horizontal_offset": 0,
+      "drawer_shadow_vertical_offset": 4,
+      "drawer_shadow_blur": 5,
+      "badge_position": "bottom left",
+      "badge_corner_radius": 40,
+      "sale_badge_color_scheme": "scheme-4",
+      "sold_out_badge_color_scheme": "scheme-3",
+      "brand_headline": "",
+      "brand_description": "<p></p>",
+      "brand_image_width": 100,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tiktok_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "predictive_search_enabled": true,
+      "predictive_search_show_vendor": false,
+      "predictive_search_show_price": false,
+      "currency_code_enabled": true,
+      "cart_type": "notification",
+      "show_vendor": false,
+      "show_cart_note": false,
+      "cart_drawer_collection": "",
+      "cart_color_scheme": "scheme-1",
+      "sections": {
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "color_scheme": "scheme-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "scheme-1"
+          }
+        }
+      }
+    }
+  }
+}

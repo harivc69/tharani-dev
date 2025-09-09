@@ -1,0 +1,149 @@
+{% schema %}
+{
+  "name": "Product Tabs with Cards",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Tabs with Cards"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign product_tabs = product.metafields.custom.product_tabs_metaobject.value %}
+{% assign product_layout_type = product.metafields.custom.product_layout_type.value %}
+
+{% if product_tabs != blank %}
+  <div class="product-tabs-wrapper" style="margin: 40px auto; max-width:1100px;">
+    <div class="tabs-nav" style="display: flex; justify-content:center; gap: 10px; margin-bottom: 20px;">
+      {% for tab in product_tabs %}
+        <button
+          class="tab-btn {% if forloop.first %}active{% endif %}"
+          data-tab="tab-{{ forloop.index }}"
+          style="padding: 10px 20px; font-weight:600; border: none; border-radius: 20px; background: {% if forloop.first %}#5a2d0c{% else %}#ddd{% endif %}; color: {% if forloop.first %}#fff{% else %}#333{% endif %}; cursor: pointer;"
+        >
+          {{ tab.tab_title }}
+        </button>
+      {% endfor %}
+    </div>
+
+    {% for tab in product_tabs %}
+      {% assign cards = tab.cards.value %}
+      <div
+        class="tab-content {% if forloop.first %}active{% endif %}"
+        id="tab-{{ forloop.index }}"
+        style="{% unless forloop.first %}display:none;{% endunless %}"
+      >
+        {% if cards != blank %}
+          {% if tab.tab_layout_type.value == '2' %}
+            <div class="cards-container2">
+          {% elsif tab.tab_layout_type.value == '3' %}
+            <div class="cards-container3">
+          {% else %}
+            <div class="cards-container">
+          {% endif %}
+          {% for card in cards %}
+            <div
+              class="card-item"
+              style="flex: 1 1 calc(25% - 20px); background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"
+            >
+              {% if card.card_icon != blank %}
+                <img
+                  src="{{ card.card_icon | file_url }}"
+                  alt="{{ card.card_heading }}"
+                  style="width: 100px; border-radius:15px; height: auto; margin-bottom: 10px;"
+                >
+              {% endif %}
+              <h4 style="font-size: 18px; margin-bottom: 8px; font-weight:semibold; color: #59230a;">
+                {{ card.card_heading }}
+              </h4>
+              <p style="font-size: 13px; color: #59230a;">{{ card.card_description }}</p>
+            </div>
+          {% endfor %}
+          </div>
+        {% else %}
+          <p style="color: #999;">No cards found for this tab.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', function () {
+          buttons.forEach((b) => {
+            b.classList.remove('active');
+            b.style.background = '#ddd';
+            b.style.color = '#333';
+          });
+          contents.forEach((c) => (c.style.display = 'none'));
+
+          this.classList.add('active');
+          this.style.background = '#5a2d0c';
+          this.style.color = '#fff';
+          document.getElementById(this.dataset.tab).style.display = 'block';
+        });
+      });
+    });
+  </script>
+{% endif %}
+
+<style>
+  .cards-container2 {
+    display: flex;
+    gap: 20px;
+  }
+  .cards-container3 {
+    display: flex;
+  }
+
+  .cards-container2 .card-item img {
+    width: 200px !important;
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .tab-btn {
+    /* Make the button background the same color when inactive to match the image */
+    background: #5a2d0c;
+    /* Make the inactive button text color a lighter shade */
+    color: #fff;
+    /* To add space between the buttons and the content below */
+    margin-bottom: 20px;
+  }
+
+  .tab-btn.active {
+    /* Style for the active tab button */
+    background: #fff;
+    border: 1px solid #5a2d0c;
+    color: #5a2d0c;
+  }
+
+  .tab-content {
+    /* Align the text to the center */
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .cards-container {
+      display: grid;
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+    }
+    .cards-container2 {
+      display: grid;
+      gap: 20px;
+    }
+    .tabs-nav {
+      margin: 20px !important;
+    }
+  }
+</style>

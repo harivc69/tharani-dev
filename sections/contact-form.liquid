@@ -1,0 +1,238 @@
+{% schema %}
+{
+  "name": "Contact Page Section",
+  "tag": "section",
+  "class": "contact-custom-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "info_email_1",
+      "label": "Business Email",
+      "default": "business@example.com"
+    },
+    {
+      "type": "text",
+      "id": "info_email_2",
+      "label": "Customer Email",
+      "default": "customer@example.com"
+    },
+    {
+      "type": "text",
+      "id": "info_email_3",
+      "label": "Other Queries Email",
+      "default": "support@example.com"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "+911234567890"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Page Section"
+    }
+  ]
+}
+{% endschema %}
+
+
+<div class="form-section">
+<div class="Section-Heading-title">
+    <h2>Contact Us</h2>
+  </div>
+<div class="contact-custom-wrapper">  
+  <div class="inner-container">
+    <div class="form-container">
+      {% form 'contact' %}
+        <div class="form-row">
+          <div class="form-group">
+           
+            <input type="text" class="in-feild" id="ContactFormName" name="contact[name]" placeholder="Name" required>
+          </div>
+          <div class="form-group">
+           
+            <input type="email" class="in-feild" id="ContactFormEmail" name="contact[email]" placeholder="Email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+           
+            <input type="tel" class="in-feild" id="ContactFormPhone" name="contact[phone]" placeholder="Phone Number" required>
+          </div>
+          <div class="form-group">
+           
+            <input type="time" class="in-feild" id="ContactFormTime" name="contact[meeting_time]" min="09:00" max="18:00" placeholder="Schedule Meeting (Weekdays)" required>
+           
+          </div>
+        </div>
+
+        <div class="form-group">
+          
+          <textarea id="ContactFormMessage" class="in-feild" name="contact[body]" rows="5" placeholder="Message" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send</button>
+      {% endform %}
+    </div>
+
+    <div class="content-container">
+      <div class="info-block">
+  <h3>{{ section.settings.info_heading }}</h3>
+  
+  <p>For collaborations and business related queries: 
+    <a href="mailto:{{ section.settings.info_email_1 }}">{{ section.settings.info_email_1 }}</a>
+  </p>
+  
+  <p>For customer related queries: 
+    <a href="mailto:{{ section.settings.info_email_2 }}">{{ section.settings.info_email_2 }}</a>
+  </p>
+
+  <p>For any other query: 
+    <a href="mailto:{{ section.settings.info_email_3 }}">{{ section.settings.info_email_3 }}</a>
+  </p>
+
+  <p>Text us on WhatsApp for faster response: 
+    <a href="https://wa.me/{{ section.settings.whatsapp_number | remove: '+' }}" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">
+      {{ section.settings.whatsapp_number }}
+    </a>
+  </p>
+
+  <p>(We are available between 10AM-7PM on all days.)</p>
+</div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+
+  @media (max-width: 768px) {
+  .form-container, .content-container {   
+    max-width: 100% !important;
+}
+    .inner-container {    
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+}
+    .form-section{
+      margin:10px;
+    }
+    .contact-custom-wrapper{
+    padding:0px !important;
+  }
+}
+
+@media (max-width: 480px) {
+   .form-container, .content-container {   
+    max-width: 100% !important;
+}
+   .inner-container {    
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+}
+   .form-section{
+      margin:10px;
+    }
+  .contact-custom-wrapper{
+    padding:0px !important;
+  }
+}
+  .Section-Heading-title{
+    max-width:1000px;
+    margin:0 auto;
+    margin-top:50px;
+  }
+  .Section-Heading-title h2{
+    margin:0;
+    font-weight:bold;
+  }
+
+  .info-block h3{
+    margin:0;
+    font-size:24px;
+  }
+  .info-block p{
+    font-size:14px;
+  }
+.contact-custom-wrapper {
+  display: flex;
+  justify-content: center;
+  padding:20px;
+}
+
+.inner-container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.form-container,
+.content-container {
+  flex: 0 0 50%;
+  max-width: 48%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #555;
+}
+
+.submit-btn {
+  padding: 10px 40px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+</style>

@@ -1,0 +1,747 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_gEQrMW": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_nX8fnr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner_2_honey_-_desktop_1.webp",
+            "mobile_image": "shopify://shop_images/Web_Banner_4_720x480th.png",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "subheading_secondary": "",
+            "button_label": "",
+            "link": "shopify://collections/natural-honey",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_Xkh9kh": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Web_Banner_2_720x480_th.png",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "subheading_secondary": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "top-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-5"
+          }
+        },
+        "slide_kecALw": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Web_Banner_1th.png",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h0",
+            "subheading": "",
+            "subheading_secondary": "",
+            "button_label": "",
+            "link": "shopify://collections/all-products",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide_nX8fnr",
+        "slide_Xkh9kh",
+        "slide_kecALw"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": ""
+      }
+    },
+    "4cards": {
+      "type": "home-4cards-aftermainbanner",
+      "blocks": {
+        "category_BCkYqU": {
+          "type": "category",
+          "settings": {
+            "pretitle": "100% Natural",
+            "title": "Pure A2 Ghee",
+            "link_text": "Shop Now",
+            "link_url": "shopify://products/a2-desi-hallikar-cow-ghee",
+            "icon": "shopify://shop_images/9b4sxo98.png"
+          }
+        },
+        "category_fM6d6a": {
+          "type": "category",
+          "settings": {
+            "pretitle": "100% Authentic",
+            "title": "Wood Pressed Oils",
+            "link_text": "Shop Now",
+            "link_url": "shopify://collections/authentic-wood-pressed-oils",
+            "icon": "shopify://shop_images/6a0mkmrx.png"
+          }
+        },
+        "category_tTLqJb": {
+          "type": "category",
+          "settings": {
+            "pretitle": "Naturally Sourced",
+            "title": "Jaggery and Sugar​",
+            "link_text": "Shop Now",
+            "link_url": "shopify://collections/naturally-sourced-jaggery-and-sugar",
+            "icon": "shopify://shop_images/fcb5sry8.png"
+          }
+        },
+        "category_8Jif87": {
+          "type": "category",
+          "settings": {
+            "pretitle": "Nourishing",
+            "title": "Rice and Pulses​",
+            "link_text": "Shop Now",
+            "link_url": "shopify://collections/nourishing-rice-and-pulses",
+            "icon": "shopify://shop_images/8ilfy91h.png"
+          }
+        }
+      },
+      "block_order": [
+        "category_BCkYqU",
+        "category_fM6d6a",
+        "category_tTLqJb",
+        "category_8Jif87"
+      ],
+      "settings": {}
+    },
+    "shopcategory": {
+      "type": "home-shopcategory",
+      "blocks": {
+        "category_jbx644": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/woodp_6bc3161f-aa61-4cc5-aeab-47922bf7facb.webp",
+            "default_title": "Authentic Wood Pressed Oils",
+            "hover_title": "Authentic Wood Pressed Oils",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/authentic-wood-pressed-oils"
+          }
+        },
+        "category_8dBV6A": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/flourr.webp",
+            "default_title": "Health-giving Flour​",
+            "hover_title": "Health-giving Flour​",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/health-giving-flour"
+          }
+        },
+        "category_ttPtrG": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/sugrr.webp",
+            "default_title": "Naturally-source Jaggery and Sugar​",
+            "hover_title": "Naturally-source Jaggery and Sugar​",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/naturally-sourced-jaggery-and-sugar"
+          }
+        },
+        "category_XDa7pH": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/ric.webp",
+            "default_title": "Nourishing Rice and Pulses",
+            "hover_title": "​Nourishing Rice and Pulses​",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/nourishing-rice-and-pulses"
+          }
+        },
+        "category_Rm93BQ": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/turm.webp",
+            "default_title": "Spices",
+            "hover_title": "Spices",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/spices"
+          }
+        },
+        "category_gwJhng": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/sncck.webp",
+            "default_title": "Nutritious Snacks",
+            "hover_title": "Nutritious Snacks",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/nutritious-snacks"
+          }
+        },
+        "category_E9tjcE": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/a2ghee.webp",
+            "default_title": "Pure A2 Ghee",
+            "hover_title": "Pure A2 Ghee",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/pure-a2-ghee"
+          }
+        },
+        "category_pwmMMG": {
+          "type": "category",
+          "settings": {
+            "icon": "shopify://shop_images/mill.webp",
+            "default_title": "Traditionally-grown Millets",
+            "hover_title": "Traditionally-grown Millets",
+            "button_text": "Shop",
+            "button_url": "shopify://collections/traditionally-grown-millets"
+          }
+        }
+      },
+      "block_order": [
+        "category_jbx644",
+        "category_8dBV6A",
+        "category_ttPtrG",
+        "category_XDa7pH",
+        "category_Rm93BQ",
+        "category_gwJhng",
+        "category_E9tjcE",
+        "category_pwmMMG"
+      ],
+      "settings": {
+        "subheader_text": "Eat Wise For Healthy Life",
+        "title_text": "Shop by Category",
+        "auto_slide": false
+      }
+    },
+    "best_products": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Your Everyday Essentials, Curated for You",
+        "collection": "all-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "freshProducts": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New Arrivals | Straight from Nature",
+        "collection": "best-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "GheeProducts": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Grandma’s Choice – Pure Ghee Goodness",
+        "collection": "fresh-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "OilProducts": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Oil from Seeds, Not Factories | Oil Range",
+        "collection": "fresh-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "meetsProducts": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Tradition Meets Convenience | Healthy Combos",
+        "collection": "fresh-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "superProducts": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Rooted in Tradition, Backed by Science | Superfoods",
+        "collection": "fresh-products",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "color_scheme": ""
+      }
+    },
+    "17459032117eee278c": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_ckcFa9": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Cook With Tharani",
+            "title_color": "",
+            "title_size_v2": 35,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "tharani-insta-1",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_ckcFa9"
+      ],
+      "custom_css": [
+        ".instafeed-new-layout-container {margin: 50px auto;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "whychoose": {
+      "type": "home-whychoose",
+      "blocks": {
+        "feature_74Exa4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/nutrihq.webp",
+            "title": "High Nutritious Value",
+            "description": "Our products are known for their quality and nutritious value, which are grown organically and delivered to your door within hours of harvest. It means we are against the use of GMOs (Genetically modified seeds) and chemical preservatives."
+          }
+        },
+        "feature_QjAagE": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/farmr.webp",
+            "title": "Farmer Consumer Symbiotic",
+            "description": "We support the symbiotic relationship between farmer and consumer, with the goal to achieve substantial-level sustainability and address the transparent relationships with customers."
+          }
+        },
+        "feature_jr3m63": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/sustainb.webp",
+            "title": "Sustainable Farming",
+            "description": "Our products are developed organically and processed in the best ecologically sustainable environment, which is naturally good for one’s health and the earth. We are committed to delivering fresh and nutritious products."
+          }
+        },
+        "feature_Qjd7ct": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/hndd.webp",
+            "title": "Revitalise Ecology and Soil",
+            "description": "Our values extend to the fields of ecology and soil, which drives us to move towards socially conscious farming practices, revitalising the ecology and promoting the well-being of soil, with all the necessary nutrients."
+          }
+        }
+      },
+      "block_order": [
+        "feature_74Exa4",
+        "feature_QjAagE",
+        "feature_jr3m63",
+        "feature_Qjd7ct"
+      ],
+      "settings": {
+        "subheader_text": "The Sustainable Solutions for Prevailing Problems",
+        "title_text": "Why Choose Tharani?",
+        "description_paragraph_1": "There is nothing better than consuming fresh and natural foods. Tharani is found with the motive of helping people in taking back control of what they consume and learn where it comes from.",
+        "description_paragraph_2": ""
+      }
+    },
+    "statistics": {
+      "type": "statistics",
+      "blocks": {
+        "stat_8mknJm": {
+          "type": "stat",
+          "settings": {
+            "number": "1500",
+            "line1": "FARMERS",
+            "line2": "EMPOWERED"
+          }
+        },
+        "stat_aw7TF7": {
+          "type": "stat",
+          "settings": {
+            "number": "30",
+            "line1": "JOBS CREATED",
+            "line2": "IN RURAL INDIA"
+          }
+        },
+        "stat_xmyXpV": {
+          "type": "stat",
+          "settings": {
+            "number": "15",
+            "line1": "LAB TESTS",
+            "line2": "DONE"
+          }
+        }
+      },
+      "block_order": [
+        "stat_8mknJm",
+        "stat_aw7TF7",
+        "stat_xmyXpV"
+      ],
+      "settings": {}
+    },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "feature_zdbmne": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icons8-delivery-time-100.png",
+            "heading": "Safe doorstep delivery",
+            "text": "Get all your products delivered safely to\nyour doorstep."
+          }
+        },
+        "feature_zjx7xk": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icons8-card-security-100.png",
+            "heading": "Multiple payment gateways",
+            "text": "Experience a streamlined and frictionless payment journey\nfrom our variety of integrated payment methods."
+          }
+        },
+        "feature_jy4M4R": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icons8-call-center-100.png",
+            "heading": "Instant support and easy refund",
+            "text": "Get 24/7 support and an easy refund policy on\nvalid products."
+          }
+        },
+        "feature_hEPiT6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icons8-thumbs-up-100.png",
+            "heading": "Transparent and traceable",
+            "text": "Trace the journey of your fresh order from\nfarm to your home, anytime and anywhere."
+          }
+        }
+      },
+      "block_order": [
+        "feature_zdbmne",
+        "feature_zjx7xk",
+        "feature_jy4M4R",
+        "feature_hEPiT6"
+      ],
+      "settings": {}
+    },
+    "image-slider": {
+      "type": "home-secondSlider",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/blog2.webp",
+            "heading": "Welcome to Our Store",
+            "subtext": "Our farmers work twice as hard as we do in order to deliver the best to you.",
+            "button_text": "About More",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "slide-1"
+      ],
+      "settings": {}
+    },
+    "home-testimonials": {
+      "type": "home-testmonial",
+      "blocks": {
+        "testimonial_g6QzRn": {
+          "type": "testimonial",
+          "settings": {
+            "name_top": "",
+            "image": "shopify://shop_images/purv.webp",
+            "name": "Puravi G",
+            "review": "Starting with the packaging to the scrumptious tadkas that Tharani's ghee makes possible, it's an absolute delight to all fie of my senses, I already see this becoming a part of all my dishes and a regular in the household.",
+            "stars": 5
+          }
+        },
+        "testimonial_7yaVkV": {
+          "type": "testimonial",
+          "settings": {
+            "name_top": "",
+            "image": "shopify://shop_images/Sunil-Tharani.webp",
+            "name": "Sunil V",
+            "review": "Tharani's pure ghee is hands-down one of the best I've had in my life.\nI'ts probably one of the only commercial ghee to match the aroma and taste of authentic homemade ghee.",
+            "stars": 5
+          }
+        },
+        "testimonial_7iqhj6": {
+          "type": "testimonial",
+          "settings": {
+            "name_top": "",
+            "image": "shopify://shop_images/santosh.webp",
+            "name": "Santosh M",
+            "review": "My goal this year was to switch to natural food, and Tharani helped me achive that. I started with their A2 ghee,which was delicious and healthy.",
+            "stars": 5
+          }
+        },
+        "testimonial_pJVRNk": {
+          "type": "testimonial",
+          "settings": {
+            "name_top": "",
+            "image": "shopify://shop_images/vaishali.webp",
+            "name": "Vaishali P",
+            "review": "I am Vaishali a fitness enthusiast, I used this oil from Tharni and I really \nLiked it...well packed in good condition, smells so nice...I really feel it has the same purity which we were getting some 20yrd back...I highly recommended this pure and authentic product to be used by all..",
+            "stars": 5
+          }
+        },
+        "testimonial_DtAPx6": {
+          "type": "testimonial",
+          "settings": {
+            "name_top": "",
+            "image": "shopify://shop_images/pavan_1.webp",
+            "name": "Pawan",
+            "review": "We tried Groundnut oil and I feel it is very light and is not absorbed much, Our family felt the purity of oil and now we really trust the quality of the product. I would recommend others to use it to ensure better and healthy living.",
+            "stars": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_g6QzRn",
+        "testimonial_7yaVkV",
+        "testimonial_7iqhj6",
+        "testimonial_pJVRNk",
+        "testimonial_DtAPx6"
+      ],
+      "settings": {
+        "heading": "What Do Our Customers Say",
+        "subheading": "",
+        "description": "",
+        "section_class": ""
+      }
+    },
+    "contact_cta": {
+      "type": "home-contactCTA",
+      "settings": {
+        "title": "Need Assistance?",
+        "description": "Our team is here to help! Reach out to us for product questions, order help, or anything else.",
+        "button_link": "/pages/contact",
+        "button_text": "Contact Us"
+      }
+    },
+    "my_cu-service_section": {
+      "type": "home-customer-service",
+      "blocks": {
+        "agent_feature_WKfAe4": {
+          "type": "agent_feature",
+          "settings": {
+            "icon_svg": "<svg width=\"40px\" viewbox=\"0 0 150 150\"><path id=\"_2nd\" data-name=\"2nd\" style=\"fill:#231f20;\" d=\"M60.66,144.09q2.4-9.83,4.87-19.76a1.31,1.31,0,0,0,0-.59c-.93-3.25-1.86-6.49-2.85-9.91-1.06.65-2,1.22-2.89,1.78-2.3,1.4-4.13,1-5.38-1.3-2.18-3.93-4.32-7.86-6.47-11.76-.26-.47-.54-1-.83-1.45-7.34,2.2-14.48,4.49-20.44,9.1-4.3,3.33-7,7.53-7.21,12.76-.22,7-.06,14-.06,21.34h2a44.64,44.64,0,0,1,4.78.17,2.72,2.72,0,0,1,2.4,2.89,2.81,2.81,0,0,1-2.63,2.74c-3.39.12-6.82.12-10.25,0-1.73-.06-2.69-1.4-2.69-3.28,0-7.52,0-15.08,0-22.61a24.59,24.59,0,0,1,.54-4.85c1.29-6.13,5-10.86,10.22-14.6,6.22-4.41,13.36-6.94,20.73-9.08,4.33-1.25,8.65-2.41,13.07-3.63,0-2.62,0-5.21,0-7.76a1.45,1.45,0,0,0-.67-1A29.92,29.92,0,0,1,43.33,65a1.29,1.29,0,0,0-.2-.3,43.66,43.66,0,0,1-4.83-.39c-5.19-.95-9-5.09-9-10,0-2.43.55-4.87.71-7.34.19-2.77.16-5.54.32-8.3,1.06-18,15.92-34,34.95-37.52,25-4.67,48.35,9.94,53.06,33.29a51.19,51.19,0,0,1,.64,6.22c.32,4.22,1.21,8.51.77,12.67-.58,5.09-.42,10.18-.81,15.24-.35,4.7-4.1,7.67-9.22,7.7-2.79,0-5.54-.06-8.33,0a3.7,3.7,0,0,0-2,.86C97.05,79.08,94.78,81,92.57,83a2.88,2.88,0,0,0-1,1.78c-.12,2.38,0,4.76,0,7.29,3.4.92,6.83,1.85,10.22,2.8,7.27,2,14.42,4.28,20.86,8.15,7.3,4.37,12.24,10.23,13.29,18.48a25.14,25.14,0,0,1,.2,3.12V146.5c0,2.79-1,3.75-4,3.75H54.54c-2.92,0-4.61-1.85-3.68-4,.6-1.46,1.92-1.9,3.49-1.9l5.92-.06C60.37,144.27,60.47,144.18,60.66,144.09ZM48.74,50.52c.16,3.86-.06,7.82.58,11.66,1.5,8.93,7,15.23,16.08,18.48s17.4,1.81,25-3.52a6.36,6.36,0,0,0,.84-.89h-12c-1.66,0-3.3.06-5-.06a3,3,0,0,1-3-3,3,3,0,0,1,3-2.83,14.24,14.24,0,0,1,1.6,0c6.47,0,12.91,0,19.38,0a2,2,0,0,0,2.18-1.28c.71-1.9,1.89-3.78,2.08-5.74.45-4.61.48-9.28.61-13.92,0-.33-.41-.78-.77-1-2.33-1.39-4.71-2.7-7.08-4.07a14.8,14.8,0,0,0-13.42-.92c-6.31,2.41-12.62,4.87-19.41,5.92C56.08,50,52.55,50.16,48.74,50.52Zm81,93.78c.06-.42.13-.6.13-.81,0-6.6.09-13.18,0-19.78a16.06,16.06,0,0,0-5.09-11.55c-6.18-6.07-14.38-8.57-22.65-11.09-.38.65-.67,1.16-1,1.69-2.15,3.87-4.26,7.77-6.44,11.63-1.22,2.18-3.08,2.62-5.29,1.28-.93-.56-1.85-1.16-2.94-1.81-1,3.42-1.93,6.69-2.85,10a1.85,1.85,0,0,0,.16,1c1.47,6,2.94,12,4.35,18,.29,1.19.84,1.52,2.12,1.52,12.59-.06,25.18,0,37.77,0C128.51,144.3,129.06,144.3,129.7,144.3ZM49,44.6c3.52-.36,7.08-.3,10.35-1.16,6.34-1.67,12.46-4,18.77-5.81a30.62,30.62,0,0,1,7.5-1.1c4.26-.12,7.91,1.73,11.47,3.72,1,.54,1.95,1.1,3,1.73.32-12-10.76-24.22-26.62-23.8C59.19,18.5,47.65,30.61,49,44.6ZM42.46,40C44,21.69,61.14,12.4,73.41,12.29a34,34,0,0,1,19.16,5.17c8.49,5.48,13,13.12,14,22.52,2.11.24,4.06.48,6,.69.19-10.15-5.8-22.88-18.78-29.66C80.07,3.87,66.3,4.22,53.23,12.26,42.4,18.92,37.05,28.71,36.37,40.7,38.59,40.46,40.51,40.25,42.46,40ZM82,144.21c-1.16-4.7-2.28-9.29-3.4-13.84-.87-3.51-.9-3.42-4.84-3.54-1.82-.06-2.56.42-2.91,2.11-1.09,5.09-2.44,10.12-3.69,15.3C72.1,144.21,76.93,144.21,82,144.21Zm3.2-57.69a35.46,35.46,0,0,1-21.24,0c0,1.93,0,3.72,0,5.5a1.85,1.85,0,0,0,.77,1.13c2.95,1.88,5.93,3.69,8.87,5.59a1.45,1.45,0,0,0,1.83,0c3-1.9,5.93-3.68,8.87-5.59a2,2,0,0,0,.84-1.28C85.23,90.18,85.2,88.45,85.2,86.52ZM77.83,121c1-3.33,1.92-6.69,2.82-10,.1-.32-.29-.89-.61-1.13-1.5-1-3-2-4.64-2.88a1.89,1.89,0,0,0-1.51-.06c-1.7.95-3.3,2-4.9,3.06a1.2,1.2,0,0,0-.48,1c.89,3.37,1.86,6.7,2.82,10C73.54,121,75.62,121,77.83,121ZM58.74,109.25c3.46-2.17,6.76-4.26,10.15-6.4-2.78-1.75-5.38-3.39-8-5-.25-.15-.61-.35-.86-.27-2.21.57-4.42,1.19-6.73,1.82C55.15,102.76,56.91,105.92,58.74,109.25Zm21.49-6.4c3.5,2.17,6.8,4.26,10.19,6.37,1.86-3.36,3.62-6.55,5.42-9.85-2.25-.63-4.27-1.22-6.32-1.76a1.83,1.83,0,0,0-1.18.15C85.68,99.4,83.05,101.07,80.23,102.85Zm26.43-44.24c4.59.42,7-1.52,7-5.5V51.32c-.13-3.78-2.89-5.8-7-5.06ZM42.43,46.2c-4.52-.47-6.92,1.43-7,5.51v1.48c.06,3.9,2.66,6,7,5.36Zm70.26,17.94c-2,.12-4,.24-6,.42-.35,0-.87.27-1,.54-.61,1.72-1.12,3.45-1.73,5.32,2.18,0,4.23.09,6.28,0a2.25,2.25,0,0,0,2.3-2.23C112.75,66.76,112.69,65.36,112.69,64.14Z\"></path></svg>",
+            "feature_text_line1": "Available over WhatsApp or call",
+            "feature_text_line2": ""
+          }
+        },
+        "agent_feature_YXVAVP": {
+          "type": "agent_feature",
+          "settings": {
+            "icon_svg": "<svg width=\"40px\" viewbox=\"0 0 150 150\"><path id=\"_2nd\" data-name=\"2nd\" style=\"fill:#231f20;\" d=\"M60.66,144.09q2.4-9.83,4.87-19.76a1.31,1.31,0,0,0,0-.59c-.93-3.25-1.86-6.49-2.85-9.91-1.06.65-2,1.22-2.89,1.78-2.3,1.4-4.13,1-5.38-1.3-2.18-3.93-4.32-7.86-6.47-11.76-.26-.47-.54-1-.83-1.45-7.34,2.2-14.48,4.49-20.44,9.1-4.3,3.33-7,7.53-7.21,12.76-.22,7-.06,14-.06,21.34h2a44.64,44.64,0,0,1,4.78.17,2.72,2.72,0,0,1,2.4,2.89,2.81,2.81,0,0,1-2.63,2.74c-3.39.12-6.82.12-10.25,0-1.73-.06-2.69-1.4-2.69-3.28,0-7.52,0-15.08,0-22.61a24.59,24.59,0,0,1,.54-4.85c1.29-6.13,5-10.86,10.22-14.6,6.22-4.41,13.36-6.94,20.73-9.08,4.33-1.25,8.65-2.41,13.07-3.63,0-2.62,0-5.21,0-7.76a1.45,1.45,0,0,0-.67-1A29.92,29.92,0,0,1,43.33,65a1.29,1.29,0,0,0-.2-.3,43.66,43.66,0,0,1-4.83-.39c-5.19-.95-9-5.09-9-10,0-2.43.55-4.87.71-7.34.19-2.77.16-5.54.32-8.3,1.06-18,15.92-34,34.95-37.52,25-4.67,48.35,9.94,53.06,33.29a51.19,51.19,0,0,1,.64,6.22c.32,4.22,1.21,8.51.77,12.67-.58,5.09-.42,10.18-.81,15.24-.35,4.7-4.1,7.67-9.22,7.7-2.79,0-5.54-.06-8.33,0a3.7,3.7,0,0,0-2,.86C97.05,79.08,94.78,81,92.57,83a2.88,2.88,0,0,0-1,1.78c-.12,2.38,0,4.76,0,7.29,3.4.92,6.83,1.85,10.22,2.8,7.27,2,14.42,4.28,20.86,8.15,7.3,4.37,12.24,10.23,13.29,18.48a25.14,25.14,0,0,1,.2,3.12V146.5c0,2.79-1,3.75-4,3.75H54.54c-2.92,0-4.61-1.85-3.68-4,.6-1.46,1.92-1.9,3.49-1.9l5.92-.06C60.37,144.27,60.47,144.18,60.66,144.09ZM48.74,50.52c.16,3.86-.06,7.82.58,11.66,1.5,8.93,7,15.23,16.08,18.48s17.4,1.81,25-3.52a6.36,6.36,0,0,0,.84-.89h-12c-1.66,0-3.3.06-5-.06a3,3,0,0,1-3-3,3,3,0,0,1,3-2.83,14.24,14.24,0,0,1,1.6,0c6.47,0,12.91,0,19.38,0a2,2,0,0,0,2.18-1.28c.71-1.9,1.89-3.78,2.08-5.74.45-4.61.48-9.28.61-13.92,0-.33-.41-.78-.77-1-2.33-1.39-4.71-2.7-7.08-4.07a14.8,14.8,0,0,0-13.42-.92c-6.31,2.41-12.62,4.87-19.41,5.92C56.08,50,52.55,50.16,48.74,50.52Zm81,93.78c.06-.42.13-.6.13-.81,0-6.6.09-13.18,0-19.78a16.06,16.06,0,0,0-5.09-11.55c-6.18-6.07-14.38-8.57-22.65-11.09-.38.65-.67,1.16-1,1.69-2.15,3.87-4.26,7.77-6.44,11.63-1.22,2.18-3.08,2.62-5.29,1.28-.93-.56-1.85-1.16-2.94-1.81-1,3.42-1.93,6.69-2.85,10a1.85,1.85,0,0,0,.16,1c1.47,6,2.94,12,4.35,18,.29,1.19.84,1.52,2.12,1.52,12.59-.06,25.18,0,37.77,0C128.51,144.3,129.06,144.3,129.7,144.3ZM49,44.6c3.52-.36,7.08-.3,10.35-1.16,6.34-1.67,12.46-4,18.77-5.81a30.62,30.62,0,0,1,7.5-1.1c4.26-.12,7.91,1.73,11.47,3.72,1,.54,1.95,1.1,3,1.73.32-12-10.76-24.22-26.62-23.8C59.19,18.5,47.65,30.61,49,44.6ZM42.46,40C44,21.69,61.14,12.4,73.41,12.29a34,34,0,0,1,19.16,5.17c8.49,5.48,13,13.12,14,22.52,2.11.24,4.06.48,6,.69.19-10.15-5.8-22.88-18.78-29.66C80.07,3.87,66.3,4.22,53.23,12.26,42.4,18.92,37.05,28.71,36.37,40.7,38.59,40.46,40.51,40.25,42.46,40ZM82,144.21c-1.16-4.7-2.28-9.29-3.4-13.84-.87-3.51-.9-3.42-4.84-3.54-1.82-.06-2.56.42-2.91,2.11-1.09,5.09-2.44,10.12-3.69,15.3C72.1,144.21,76.93,144.21,82,144.21Zm3.2-57.69a35.46,35.46,0,0,1-21.24,0c0,1.93,0,3.72,0,5.5a1.85,1.85,0,0,0,.77,1.13c2.95,1.88,5.93,3.69,8.87,5.59a1.45,1.45,0,0,0,1.83,0c3-1.9,5.93-3.68,8.87-5.59a2,2,0,0,0,.84-1.28C85.23,90.18,85.2,88.45,85.2,86.52ZM77.83,121c1-3.33,1.92-6.69,2.82-10,.1-.32-.29-.89-.61-1.13-1.5-1-3-2-4.64-2.88a1.89,1.89,0,0,0-1.51-.06c-1.7.95-3.3,2-4.9,3.06a1.2,1.2,0,0,0-.48,1c.89,3.37,1.86,6.7,2.82,10C73.54,121,75.62,121,77.83,121ZM58.74,109.25c3.46-2.17,6.76-4.26,10.15-6.4-2.78-1.75-5.38-3.39-8-5-.25-.15-.61-.35-.86-.27-2.21.57-4.42,1.19-6.73,1.82C55.15,102.76,56.91,105.92,58.74,109.25Zm21.49-6.4c3.5,2.17,6.8,4.26,10.19,6.37,1.86-3.36,3.62-6.55,5.42-9.85-2.25-.63-4.27-1.22-6.32-1.76a1.83,1.83,0,0,0-1.18.15C85.68,99.4,83.05,101.07,80.23,102.85Zm26.43-44.24c4.59.42,7-1.52,7-5.5V51.32c-.13-3.78-2.89-5.8-7-5.06ZM42.43,46.2c-4.52-.47-6.92,1.43-7,5.51v1.48c.06,3.9,2.66,6,7,5.36Zm70.26,17.94c-2,.12-4,.24-6,.42-.35,0-.87.27-1,.54-.61,1.72-1.12,3.45-1.73,5.32,2.18,0,4.23.09,6.28,0a2.25,2.25,0,0,0,2.3-2.23C112.75,66.76,112.69,65.36,112.69,64.14Z\"></path></svg>",
+            "feature_text_line1": "Continuous support",
+            "feature_text_line2": "throughout your journey"
+          }
+        },
+        "agent_feature_z8Ljq9": {
+          "type": "agent_feature",
+          "settings": {
+            "icon_svg": "<svg width=\"40px\" viewbox=\"0 0 150 150\"><path id=\"_2nd\" data-name=\"2nd\" style=\"fill:#231f20;\" d=\"M60.66,144.09q2.4-9.83,4.87-19.76a1.31,1.31,0,0,0,0-.59c-.93-3.25-1.86-6.49-2.85-9.91-1.06.65-2,1.22-2.89,1.78-2.3,1.4-4.13,1-5.38-1.3-2.18-3.93-4.32-7.86-6.47-11.76-.26-.47-.54-1-.83-1.45-7.34,2.2-14.48,4.49-20.44,9.1-4.3,3.33-7,7.53-7.21,12.76-.22,7-.06,14-.06,21.34h2a44.64,44.64,0,0,1,4.78.17,2.72,2.72,0,0,1,2.4,2.89,2.81,2.81,0,0,1-2.63,2.74c-3.39.12-6.82.12-10.25,0-1.73-.06-2.69-1.4-2.69-3.28,0-7.52,0-15.08,0-22.61a24.59,24.59,0,0,1,.54-4.85c1.29-6.13,5-10.86,10.22-14.6,6.22-4.41,13.36-6.94,20.73-9.08,4.33-1.25,8.65-2.41,13.07-3.63,0-2.62,0-5.21,0-7.76a1.45,1.45,0,0,0-.67-1A29.92,29.92,0,0,1,43.33,65a1.29,1.29,0,0,0-.2-.3,43.66,43.66,0,0,1-4.83-.39c-5.19-.95-9-5.09-9-10,0-2.43.55-4.87.71-7.34.19-2.77.16-5.54.32-8.3,1.06-18,15.92-34,34.95-37.52,25-4.67,48.35,9.94,53.06,33.29a51.19,51.19,0,0,1,.64,6.22c.32,4.22,1.21,8.51.77,12.67-.58,5.09-.42,10.18-.81,15.24-.35,4.7-4.1,7.67-9.22,7.7-2.79,0-5.54-.06-8.33,0a3.7,3.7,0,0,0-2,.86C97.05,79.08,94.78,81,92.57,83a2.88,2.88,0,0,0-1,1.78c-.12,2.38,0,4.76,0,7.29,3.4.92,6.83,1.85,10.22,2.8,7.27,2,14.42,4.28,20.86,8.15,7.3,4.37,12.24,10.23,13.29,18.48a25.14,25.14,0,0,1,.2,3.12V146.5c0,2.79-1,3.75-4,3.75H54.54c-2.92,0-4.61-1.85-3.68-4,.6-1.46,1.92-1.9,3.49-1.9l5.92-.06C60.37,144.27,60.47,144.18,60.66,144.09ZM48.74,50.52c.16,3.86-.06,7.82.58,11.66,1.5,8.93,7,15.23,16.08,18.48s17.4,1.81,25-3.52a6.36,6.36,0,0,0,.84-.89h-12c-1.66,0-3.3.06-5-.06a3,3,0,0,1-3-3,3,3,0,0,1,3-2.83,14.24,14.24,0,0,1,1.6,0c6.47,0,12.91,0,19.38,0a2,2,0,0,0,2.18-1.28c.71-1.9,1.89-3.78,2.08-5.74.45-4.61.48-9.28.61-13.92,0-.33-.41-.78-.77-1-2.33-1.39-4.71-2.7-7.08-4.07a14.8,14.8,0,0,0-13.42-.92c-6.31,2.41-12.62,4.87-19.41,5.92C56.08,50,52.55,50.16,48.74,50.52Zm81,93.78c.06-.42.13-.6.13-.81,0-6.6.09-13.18,0-19.78a16.06,16.06,0,0,0-5.09-11.55c-6.18-6.07-14.38-8.57-22.65-11.09-.38.65-.67,1.16-1,1.69-2.15,3.87-4.26,7.77-6.44,11.63-1.22,2.18-3.08,2.62-5.29,1.28-.93-.56-1.85-1.16-2.94-1.81-1,3.42-1.93,6.69-2.85,10a1.85,1.85,0,0,0,.16,1c1.47,6,2.94,12,4.35,18,.29,1.19.84,1.52,2.12,1.52,12.59-.06,25.18,0,37.77,0C128.51,144.3,129.06,144.3,129.7,144.3ZM49,44.6c3.52-.36,7.08-.3,10.35-1.16,6.34-1.67,12.46-4,18.77-5.81a30.62,30.62,0,0,1,7.5-1.1c4.26-.12,7.91,1.73,11.47,3.72,1,.54,1.95,1.1,3,1.73.32-12-10.76-24.22-26.62-23.8C59.19,18.5,47.65,30.61,49,44.6ZM42.46,40C44,21.69,61.14,12.4,73.41,12.29a34,34,0,0,1,19.16,5.17c8.49,5.48,13,13.12,14,22.52,2.11.24,4.06.48,6,.69.19-10.15-5.8-22.88-18.78-29.66C80.07,3.87,66.3,4.22,53.23,12.26,42.4,18.92,37.05,28.71,36.37,40.7,38.59,40.46,40.51,40.25,42.46,40ZM82,144.21c-1.16-4.7-2.28-9.29-3.4-13.84-.87-3.51-.9-3.42-4.84-3.54-1.82-.06-2.56.42-2.91,2.11-1.09,5.09-2.44,10.12-3.69,15.3C72.1,144.21,76.93,144.21,82,144.21Zm3.2-57.69a35.46,35.46,0,0,1-21.24,0c0,1.93,0,3.72,0,5.5a1.85,1.85,0,0,0,.77,1.13c2.95,1.88,5.93,3.69,8.87,5.59a1.45,1.45,0,0,0,1.83,0c3-1.9,5.93-3.68,8.87-5.59a2,2,0,0,0,.84-1.28C85.23,90.18,85.2,88.45,85.2,86.52ZM77.83,121c1-3.33,1.92-6.69,2.82-10,.1-.32-.29-.89-.61-1.13-1.5-1-3-2-4.64-2.88a1.89,1.89,0,0,0-1.51-.06c-1.7.95-3.3,2-4.9,3.06a1.2,1.2,0,0,0-.48,1c.89,3.37,1.86,6.7,2.82,10C73.54,121,75.62,121,77.83,121ZM58.74,109.25c3.46-2.17,6.76-4.26,10.15-6.4-2.78-1.75-5.38-3.39-8-5-.25-.15-.61-.35-.86-.27-2.21.57-4.42,1.19-6.73,1.82C55.15,102.76,56.91,105.92,58.74,109.25Zm21.49-6.4c3.5,2.17,6.8,4.26,10.19,6.37,1.86-3.36,3.62-6.55,5.42-9.85-2.25-.63-4.27-1.22-6.32-1.76a1.83,1.83,0,0,0-1.18.15C85.68,99.4,83.05,101.07,80.23,102.85Zm26.43-44.24c4.59.42,7-1.52,7-5.5V51.32c-.13-3.78-2.89-5.8-7-5.06ZM42.43,46.2c-4.52-.47-6.92,1.43-7,5.51v1.48c.06,3.9,2.66,6,7,5.36Zm70.26,17.94c-2,.12-4,.24-6,.42-.35,0-.87.27-1,.54-.61,1.72-1.12,3.45-1.73,5.32,2.18,0,4.23.09,6.28,0a2.25,2.25,0,0,0,2.3-2.23C112.75,66.76,112.69,65.36,112.69,64.14Z\"></path></svg>",
+            "feature_text_line1": "Easily schedule reorders",
+            "feature_text_line2": ""
+          }
+        },
+        "agent_feature_GPWUfG": {
+          "type": "agent_feature",
+          "settings": {
+            "icon_svg": "<svg width=\"40px\" viewbox=\"0 0 150 150\"><path id=\"_2nd\" data-name=\"2nd\" style=\"fill:#231f20;\" d=\"M60.66,144.09q2.4-9.83,4.87-19.76a1.31,1.31,0,0,0,0-.59c-.93-3.25-1.86-6.49-2.85-9.91-1.06.65-2,1.22-2.89,1.78-2.3,1.4-4.13,1-5.38-1.3-2.18-3.93-4.32-7.86-6.47-11.76-.26-.47-.54-1-.83-1.45-7.34,2.2-14.48,4.49-20.44,9.1-4.3,3.33-7,7.53-7.21,12.76-.22,7-.06,14-.06,21.34h2a44.64,44.64,0,0,1,4.78.17,2.72,2.72,0,0,1,2.4,2.89,2.81,2.81,0,0,1-2.63,2.74c-3.39.12-6.82.12-10.25,0-1.73-.06-2.69-1.4-2.69-3.28,0-7.52,0-15.08,0-22.61a24.59,24.59,0,0,1,.54-4.85c1.29-6.13,5-10.86,10.22-14.6,6.22-4.41,13.36-6.94,20.73-9.08,4.33-1.25,8.65-2.41,13.07-3.63,0-2.62,0-5.21,0-7.76a1.45,1.45,0,0,0-.67-1A29.92,29.92,0,0,1,43.33,65a1.29,1.29,0,0,0-.2-.3,43.66,43.66,0,0,1-4.83-.39c-5.19-.95-9-5.09-9-10,0-2.43.55-4.87.71-7.34.19-2.77.16-5.54.32-8.3,1.06-18,15.92-34,34.95-37.52,25-4.67,48.35,9.94,53.06,33.29a51.19,51.19,0,0,1,.64,6.22c.32,4.22,1.21,8.51.77,12.67-.58,5.09-.42,10.18-.81,15.24-.35,4.7-4.1,7.67-9.22,7.7-2.79,0-5.54-.06-8.33,0a3.7,3.7,0,0,0-2,.86C97.05,79.08,94.78,81,92.57,83a2.88,2.88,0,0,0-1,1.78c-.12,2.38,0,4.76,0,7.29,3.4.92,6.83,1.85,10.22,2.8,7.27,2,14.42,4.28,20.86,8.15,7.3,4.37,12.24,10.23,13.29,18.48a25.14,25.14,0,0,1,.2,3.12V146.5c0,2.79-1,3.75-4,3.75H54.54c-2.92,0-4.61-1.85-3.68-4,.6-1.46,1.92-1.9,3.49-1.9l5.92-.06C60.37,144.27,60.47,144.18,60.66,144.09ZM48.74,50.52c.16,3.86-.06,7.82.58,11.66,1.5,8.93,7,15.23,16.08,18.48s17.4,1.81,25-3.52a6.36,6.36,0,0,0,.84-.89h-12c-1.66,0-3.3.06-5-.06a3,3,0,0,1-3-3,3,3,0,0,1,3-2.83,14.24,14.24,0,0,1,1.6,0c6.47,0,12.91,0,19.38,0a2,2,0,0,0,2.18-1.28c.71-1.9,1.89-3.78,2.08-5.74.45-4.61.48-9.28.61-13.92,0-.33-.41-.78-.77-1-2.33-1.39-4.71-2.7-7.08-4.07a14.8,14.8,0,0,0-13.42-.92c-6.31,2.41-12.62,4.87-19.41,5.92C56.08,50,52.55,50.16,48.74,50.52Zm81,93.78c.06-.42.13-.6.13-.81,0-6.6.09-13.18,0-19.78a16.06,16.06,0,0,0-5.09-11.55c-6.18-6.07-14.38-8.57-22.65-11.09-.38.65-.67,1.16-1,1.69-2.15,3.87-4.26,7.77-6.44,11.63-1.22,2.18-3.08,2.62-5.29,1.28-.93-.56-1.85-1.16-2.94-1.81-1,3.42-1.93,6.69-2.85,10a1.85,1.85,0,0,0,.16,1c1.47,6,2.94,12,4.35,18,.29,1.19.84,1.52,2.12,1.52,12.59-.06,25.18,0,37.77,0C128.51,144.3,129.06,144.3,129.7,144.3ZM49,44.6c3.52-.36,7.08-.3,10.35-1.16,6.34-1.67,12.46-4,18.77-5.81a30.62,30.62,0,0,1,7.5-1.1c4.26-.12,7.91,1.73,11.47,3.72,1,.54,1.95,1.1,3,1.73.32-12-10.76-24.22-26.62-23.8C59.19,18.5,47.65,30.61,49,44.6ZM42.46,40C44,21.69,61.14,12.4,73.41,12.29a34,34,0,0,1,19.16,5.17c8.49,5.48,13,13.12,14,22.52,2.11.24,4.06.48,6,.69.19-10.15-5.8-22.88-18.78-29.66C80.07,3.87,66.3,4.22,53.23,12.26,42.4,18.92,37.05,28.71,36.37,40.7,38.59,40.46,40.51,40.25,42.46,40ZM82,144.21c-1.16-4.7-2.28-9.29-3.4-13.84-.87-3.51-.9-3.42-4.84-3.54-1.82-.06-2.56.42-2.91,2.11-1.09,5.09-2.44,10.12-3.69,15.3C72.1,144.21,76.93,144.21,82,144.21Zm3.2-57.69a35.46,35.46,0,0,1-21.24,0c0,1.93,0,3.72,0,5.5a1.85,1.85,0,0,0,.77,1.13c2.95,1.88,5.93,3.69,8.87,5.59a1.45,1.45,0,0,0,1.83,0c3-1.9,5.93-3.68,8.87-5.59a2,2,0,0,0,.84-1.28C85.23,90.18,85.2,88.45,85.2,86.52ZM77.83,121c1-3.33,1.92-6.69,2.82-10,.1-.32-.29-.89-.61-1.13-1.5-1-3-2-4.64-2.88a1.89,1.89,0,0,0-1.51-.06c-1.7.95-3.3,2-4.9,3.06a1.2,1.2,0,0,0-.48,1c.89,3.37,1.86,6.7,2.82,10C73.54,121,75.62,121,77.83,121ZM58.74,109.25c3.46-2.17,6.76-4.26,10.15-6.4-2.78-1.75-5.38-3.39-8-5-.25-.15-.61-.35-.86-.27-2.21.57-4.42,1.19-6.73,1.82C55.15,102.76,56.91,105.92,58.74,109.25Zm21.49-6.4c3.5,2.17,6.8,4.26,10.19,6.37,1.86-3.36,3.62-6.55,5.42-9.85-2.25-.63-4.27-1.22-6.32-1.76a1.83,1.83,0,0,0-1.18.15C85.68,99.4,83.05,101.07,80.23,102.85Zm26.43-44.24c4.59.42,7-1.52,7-5.5V51.32c-.13-3.78-2.89-5.8-7-5.06ZM42.43,46.2c-4.52-.47-6.92,1.43-7,5.51v1.48c.06,3.9,2.66,6,7,5.36Zm70.26,17.94c-2,.12-4,.24-6,.42-.35,0-.87.27-1,.54-.61,1.72-1.12,3.45-1.73,5.32,2.18,0,4.23.09,6.28,0a2.25,2.25,0,0,0,2.3-2.23C112.75,66.76,112.69,65.36,112.69,64.14Z\"></path></svg>",
+            "feature_text_line1": "Completely confidential",
+            "feature_text_line2": "communication"
+          }
+        },
+        "agent_feature_RNwanw": {
+          "type": "agent_feature",
+          "settings": {
+            "image": "shopify://shop_images/anveshan--Deboashish.jpg",
+            "icon_svg": "",
+            "feature_text_line1": "",
+            "feature_text_line2": ""
+          }
+        },
+        "agent_feature_EtjEhC": {
+          "type": "agent_feature",
+          "settings": {
+            "image": "shopify://shop_images/anveshan--Deboashish.jpg",
+            "icon_svg": "",
+            "feature_text_line1": "",
+            "feature_text_line2": ""
+          }
+        },
+        "agent_feature_XaAiad": {
+          "type": "agent_feature",
+          "settings": {
+            "image": "shopify://shop_images/anveshan--Deboashish.jpg",
+            "icon_svg": "",
+            "feature_text_line1": "",
+            "feature_text_line2": ""
+          }
+        },
+        "agent_feature_LRffHB": {
+          "type": "agent_feature",
+          "settings": {
+            "image": "shopify://shop_images/anveshan--Deboashish.jpg",
+            "icon_svg": "",
+            "feature_text_line1": "",
+            "feature_text_line2": ""
+          }
+        }
+      },
+      "block_order": [
+        "agent_feature_WKfAe4",
+        "agent_feature_YXVAVP",
+        "agent_feature_z8Ljq9",
+        "agent_feature_GPWUfG",
+        "agent_feature_RNwanw",
+        "agent_feature_EtjEhC",
+        "agent_feature_XaAiad",
+        "agent_feature_LRffHB"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Our Customer Service is 2X the industry standard",
+        "description": "Get help on your queries, orders and deliveries with our personal assistant, who's always around to answer your questions.",
+        "grid_one_count": 4,
+        "grid_two_count": 4
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "collection": "all",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "17459032098a17b2a6": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_homepage_eh6hhx": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_homepage_eh6hhx"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1745909548e7f90751": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_ENNaGW": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 50,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "40090",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_ENNaGW"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "usp": {
+      "type": "usp",
+      "blocks": {
+        "logo_giaQUV": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/anv-ftr-3.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_giaQUV"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "slideshow_gEQrMW",
+    "4cards",
+    "shopcategory",
+    "best_products",
+    "freshProducts",
+    "GheeProducts",
+    "OilProducts",
+    "meetsProducts",
+    "superProducts",
+    "17459032117eee278c",
+    "whychoose",
+    "statistics",
+    "features",
+    "image-slider",
+    "home-testimonials",
+    "contact_cta",
+    "my_cu-service_section",
+    "featured_collection",
+    "17459032098a17b2a6",
+    "1745909548e7f90751",
+    "usp"
+  ]
+}

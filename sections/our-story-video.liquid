@@ -1,0 +1,65 @@
+{% schema %}
+{
+  "name": "YouTube Video Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "youtube_url",
+      "label": "YouTube Video URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "YouTube Video Section",
+      "category": "video"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="youtube-video-section">
+  {% if section.settings.section_heading != blank %}
+    <h2>{{ section.settings.section_heading }}</h2>
+  {% endif %}
+
+  {% if section.settings.youtube_url != blank %}
+    {% assign video_id = section.settings.youtube_url | split: '/' | last | split: '?v=' | last | split: '&' | first %}
+    {% if video_id != blank %}
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/{{ video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    {% else %}
+      <p>Please enter a valid YouTube video URL.</p>
+    {% endif %}
+  {% else %}
+    <p>Please enter a YouTube video URL in the section settings.</p>
+  {% endif %}
+</div>
+
+<style>
+
+@media (max-width: 768px) {
+  .youtube-video-section{
+    margin:10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+   .youtube-video-section{
+    margin:10px !important;
+  }
+}
+  
+  .youtube-video-section h2 {
+    text-align: center; /* Optional: Center the heading */
+    margin-bottom: 20px; /* Optional: Add some space below the heading */
+  }
+
+
+  
+</style>

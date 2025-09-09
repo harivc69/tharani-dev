@@ -1,0 +1,218 @@
+{% comment %}
+  Related Products Section with Top-Right Green Discount Badge,
+  No Underlines, and Title Color #59230A
+{% endcomment %}
+
+<div id="related-products-{{ section.id }}"
+     data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}">
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('#related-products-{{ section.id }}');
+    if (!container) return;
+
+    fetch(container.dataset.url)
+      .then(response => response.text())
+      .then(html => {
+        const tempEl = document.createElement('div');
+        tempEl.innerHTML = html;
+        const relatedSection = tempEl.querySelector('.related-products-section');
+        if (relatedSection) {
+          container.innerHTML = relatedSection.outerHTML;
+        }
+      });
+  });
+</script>
+
+{% if recommendations.products_count > 0 %}
+  <div class="related-products-section page-width">
+    <h2 class="related-products-title">{{ section.settings.heading }}</h2>
+    <div class="related-products-grid grid--cols">
+      {% for product in recommendations.products limit: section.settings.products_limit %}
+        <div class="related-product-card">
+          <a href="{{ product.url }}" class="related-product-link">
+            <div class="related-product-image-wrapper">
+              <img
+                src="{{ product.featured_image | image_url: width: 500 }}"
+                alt="{{ product.featured_image.alt | escape }}"
+                class="related-product-image"
+                loading="lazy"
+              >
+              {% if product.compare_at_price > product.price %}
+                <span class="discount-badge">
+  {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF
+</span>
+
+              {% endif %}
+            </div>
+            <div class="related-product-info">
+              <h3 class="related-product-title">{{ product.title }}</h3>
+<!-- Start of Judge.me code -->
+              <div style=" min-height:20px;">
+                        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                          {{ product.metafields.judgeme.badge }}
+                        </div>
+                      </div>
+              <!-- End of Judge.me code -->
+
+              <div class="related-product-price">
+                {% if product.compare_at_price > product.price %}
+                  <span class="price-regular">{{ product.price | money }}</span>
+                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+
+                  <div class="product-card__savings" style="color:green; font-size:10px;">
+                  You have saved {{ product.compare_at_price | minus: product.price | money }}
+                </div>
+                {% else %}
+                  <span class="price-regular">{{ product.price | money }}</span>
+                {% endif %}
+              </div>
+
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  /* Section container */
+  .related-products-section {
+    margin: 50px auto;
+  }
+
+  /* Heading */
+  .related-products-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #59230A;
+    text-decoration: none;
+  }
+
+  /* Grid */
+  .related-products-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* Card */
+  .related-product-card {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    background: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .related-product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Link reset underline */
+  .related-product-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .related-product-link:hover,
+  .related-product-link:focus {
+    text-decoration: none;
+  }
+
+  /* Image wrapper for positioning badge */
+  .related-product-image-wrapper {
+    position: relative;
+  }
+
+  /* Image */
+  .related-product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Discount badge top-right with green bg */
+  .discount-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: green;/*#59230A*/
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0.25em 0.9em;
+     border-top-right-radius: 0; /* Remove top-right radius */
+    border-bottom-right-radius: 0; /* Remove bottom-right radius */
+    border-top-left-radius: 20px; /* Apply top-left radius */
+    border-bottom-left-radius: 20px; /* Apply bottom-left radius */
+      z-index: 2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      letter-spacing: 0.03em;
+    }
+
+  /* Info container */
+  .related-product-info {
+    margin-top: 10px;
+    text-align:justify;
+  }
+
+  /* Title with custom color, no underline */
+  .related-product-title {
+    font-size: 14px;
+    color: #59230A;
+    margin: 0 0 5px;
+    text-decoration: none;
+  }
+
+  /* Price container */
+  .related-product-price {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  /* Price styles, no underline */
+  .price-regular {
+    font-weight: bold;
+    color: #000;
+    margin-right: 5px;
+    text-decoration: none;
+  }
+
+  .price-compare {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 5px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Related Products",
+  "tag": "section",
+  "class": "section-related-products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Number of products to show",
+      "min": 2,
+      "max": 6,
+      "default": 4
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

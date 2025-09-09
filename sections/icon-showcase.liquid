@@ -1,0 +1,116 @@
+{% comment %}
+  Section for displaying a row of icons with titles, customizable from theme settings.
+{% endcomment %}
+
+{% style %}
+  .icon-showcase {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust spacing between icons */
+    padding: 40px 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    text-align: center;
+  }
+
+  .icon-showcase__item {
+    flex: 0 0 auto; /* Don't grow, don't shrink, base on content */
+    width: 150px; /* Adjust item width as needed */
+  }
+
+  .icon-showcase__icon {
+    width: 60px; /* Adjust icon size */
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .icon-showcase__icon img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .icon-showcase__title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--color-foreground); /* Use your theme's primary text color */
+  }
+
+  @media (max-width: 768px) {
+    .icon-showcase__item {
+      width: 120px; /* Smaller width for mobile */
+    }
+  }
+{% endstyle %}
+
+<div class="icon-showcase section-{{ section.id }}">
+  {% for block in section.blocks %}
+    {% if block.settings.icon_image or block.settings.icon_title %}
+      <div class="icon-showcase__item" {{ block.shopify_attributes }}>
+        {% if block.settings.icon_image != blank %}
+          <div class="icon-showcase__icon">
+            <img src="{{ block.settings.icon_image | img_url: 'medium' }}" alt="{{ block.settings.icon_title | escape }}">
+          </div>
+        {% endif %}
+        {% if block.settings.icon_title != blank %}
+          <h3 class="icon-showcase__title">{{ block.settings.icon_title }}</h3>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Icon Showcase",
+  "tag": "section",
+  "class": "section-icon-showcase",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title (Optional)",
+      "default": "Our Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_item",
+      "name": "Icon Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_title",
+          "label": "Icon Title",
+          "default": "Feature Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Showcase",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "icon_item"
+        },
+        {
+          "type": "icon_item"
+        },
+        {
+          "type": "icon_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

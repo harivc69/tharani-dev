@@ -1,0 +1,139 @@
+<div class="promises-section">
+  {% if section.settings.section_title != blank %}
+    <h2 class="section-title">{{ section.settings.section_title }}</h2>
+  {% endif %}
+  <div class="card-container">
+    {% for block in section.blocks %}
+      <div class="promise-card">
+        {% if block.settings.image != blank %}
+          <div class="card-image-container">
+            {{ block.settings.image | image_url: width: 120, height: 120 | image_tag: class: 'card-image' }}
+          </div>
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <h3 class="card-title">{{ block.settings.title }}</h3>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <p class="card-description">{{ block.settings.description }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home 4 Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Promises"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promise_card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Promise Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "A brief description of this promise."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home 4 Cards",
+      "category": "custom",
+      "blocks": [
+        { "type": "promise_card" },
+        { "type": "promise_card" },
+        { "type": "promise_card" },
+        { "type": "promise_card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .promises-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center; /* Center the section title */
+  }
+
+  .section-title {
+    color:#59230A;
+    font-size:22px;
+   margin:0;
+    font-weight:600;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards horizontally */
+    gap: 20px;
+    max-width:1000px;
+    margin:20px auto;
+  }
+
+  .promise-card {  
+    padding:0 20px ;
+    border-radius: 8px;
+    width: calc(50% - 20px); /* Two cards per row on larger screens */
+    max-width: 300px; /* Adjust as needed */
+    text-align: center;
+  }
+
+  .card-image-container {
+    display: flex;
+    justify-content: center; /* Center the image within the container */
+    margin-bottom: 10px;
+  }
+
+  .card-image {
+    max-width: 300px; /* Adjust image size as needed */
+    max-height: 200px;
+    object-fit: cover; /* Prevent image distortion */
+  }
+
+  .card-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .card-description {
+    color: #555;
+    font-size:10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .promise-card {
+      width: calc(25% - 20px); /* Four cards per row on medium/large screens */
+      max-width: none;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  // Optional JavaScript for your section
+  console.log('Promises section loaded!');
+{% endjavascript %}

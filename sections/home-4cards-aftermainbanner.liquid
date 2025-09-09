@@ -1,0 +1,203 @@
+<div class="product-categories-section">
+  <div class="categories-grid">
+    {% for block in section.blocks %}
+      <div class="category-item">
+        <div class="category-text">
+          <p class="category-pretitle">{{ block.settings.pretitle }}</p>
+          <h3 class="category-title">{{ block.settings.title }}</h3>
+          {% if block.settings.link_text != blank and block.settings.link_url != blank %}
+            <a href="{{ block.settings.link_url }}" class="shop-now-link">{{ block.settings.link_text }}</a>
+          {% endif %}
+        </div>
+        {% if block.settings.icon != blank %}
+          <img src="{{ block.settings.icon | image_url: width: 200 }}" alt="{{ block.settings.title }}" class="category-icon">
+        {% endif %}
+      </div>
+    {% endfor %}  
+  </div>
+</div>
+
+<style>
+  .product-categories-section {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif; /* Or your theme's default font */
+    background-color: #fcfaf7; /* A light background to match the image */
+    border-top: 1px solid #eee; /* Subtle border */
+    border-bottom: 1px solid #eee; /* Subtle border */
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min-width for this layout */
+    gap:20px;
+    justify-content: center; /* Center items if there are fewer than a full row */
+  }
+
+  .category-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+    padding: 10px; /* Adjusted padding */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Pushes text to left, image to right */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;   
+    overflow: hidden; /* Prevent image from spilling */   
+  }
+
+  .category-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .category-text {
+    flex: 1; /* Allows text to take available space */
+    padding-right: 20px; /* Space between text and image */
+    text-align: left;
+    line-height:1;
+  }
+
+  .category-pretitle {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+  .category-title {
+    font-size: 1em;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  .shop-now-link {
+    display: inline-block;
+    font-size: 0.95em;
+    color:rgb(78, 50, 9); /* Accent color from previous section */
+    text-decoration: none;
+    border-bottom: 1px solid #d4a762; /* Underline effect */
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .shop-now-link:hover {
+    color: #a07a4a; /* Slightly darker accent on hover */
+    border-color: #a07a4a;
+  }
+
+  .category-icon {
+    width: 120px; /* Adjust icon size */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+   
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .category-item {
+      flex-direction: column; /* Stack text and image on smaller screens */
+      text-align: center;
+      padding: 25px;
+    }
+
+    .category-text {
+      padding-right: 0;
+      margin-bottom: 20px; /* Space between text and icon when stacked */
+    }
+    .category-icon {
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .categories-grid {
+      grid-template-columns: 1fr 1fr; /* Single column on very small screens */
+    }
+    .product-categories-section {
+      padding: 40px 15px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Product Categories",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "category",
+        "name": "Product Category",
+        "settings": [
+          {
+            "type": "text",
+            "id": "pretitle",
+            "label": "Pre-Title (e.g., 100% Natural)",
+            "default": "100% Natural"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Category Title",
+            "default": "Pure A2 Ghee"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "default": "Shop Now"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Category Icon"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Categories Grid",
+        "blocks": [
+          {
+            "type": "category",
+            "settings": {
+              "pretitle": "100% Natural",
+              "title": "Pure A2 Ghee"
+            }
+          },
+          {
+            "type": "category",
+            "settings": {
+              "pretitle": "100% Authentic",
+              "title": "Wood Pressed Oils"
+            }
+          },
+          {
+            "type": "category",
+            "settings": {
+              "pretitle": "Naturally Sourced",
+              "title": "Jaggery and Sugar"
+            }
+          },
+          {
+            "type": "category",
+            "settings": {
+              "pretitle": "Nourishing",
+              "title": "Rice and Pulses"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

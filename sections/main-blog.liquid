@@ -1,0 +1,209 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .main-blog .title--primary{
+    font-size:20px;
+    font-weight:700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .blog-banner-content {
+      width: 70% !important;
+      padding: 0 15px 0 0 !important;
+    }
+  }
+  
+{%- endstyle -%}
+
+{%- paginate blog.articles by 6 -%}
+
+{% if section.settings.banner_image or section.settings.banner_heading or section.settings.banner_subheading %}
+  <div class="blog-banner-wrapper" style="position: relative; height: 200px; width: 100%; overflow: hidden;">
+    
+    {% if section.settings.banner_image %}
+      <img 
+        src="{{ section.settings.banner_image | image_url: width: 1600 }}" 
+        alt="Blog Banner" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"
+      >
+    {% endif %}
+
+    <!-- Gradient overlay from right to left -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                background: linear-gradient(to left, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0) 100%);
+                z-index: 2;">
+    </div>
+
+    <!-- Content over the banner -->
+    <div class="blog-banner-content" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+                z-index: 3; display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
+                padding: 0 40px; color: white; text-align: right;">
+      {% if section.settings.banner_heading %}
+        <h1 style="font-size: 30px; margin: 0; color:white;">{{ section.settings.banner_heading }}</h1>
+      {% endif %}
+    
+    </div>
+
+  </div>
+{% endif %}
+
+  
+  <div class="main-blog page-width section-{{ section.id }}-padding">    
+    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">      
+    {% comment %}
+  {{ blog.title | escape }} //this code is commented
+{% endcomment %}
+Blogs
+    </h1>
+
+    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+      {%- for article in blog.articles -%}
+        <div
+          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+        >
+          {%- render 'article-card',           
+            show_excerpt: true,
+               article: article,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+  
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+{
+  "type": "image_picker",
+  "id": "banner_image",
+  "label": "Banner Image"
+},
+{
+  "type": "text",
+  "id": "banner_heading",
+  "label": "Banner Heading",
+  "default": "Welcome to Our Blog"
+},
+{
+  "type": "text",
+  "id": "banner_subheading",
+  "label": "Banner Subheading",
+  "default": "Insights, updates, and more"
+}
+
+  ]
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+{% schema %}
+{
+  "name": "USP Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Client Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Client Logo"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Client Logos (USP Section)",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="client-logos-section">
+  <div class="client-logos-container">
+    {% for block in section.blocks %}
+      {% if block.settings.logo_image %}
+        <div class="client-logo">
+          <img 
+            src="{{ block.settings.logo_image | image_url: width: 150 }}" 
+            alt="Client Logo" 
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .client-logos-section {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .client-logos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .client-logo {
+    max-width: 100px;
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .client-logo img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+</style>

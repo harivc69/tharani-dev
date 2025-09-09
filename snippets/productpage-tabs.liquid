@@ -1,0 +1,123 @@
+{% comment %}
+Section: Tabbed Content / Normal Section
+{% endcomment %}
+<div class="custom-tab-section" id="custom-tab-section-{{ section.id }}">
+  {% assign tab_count = section.blocks.size %}
+ 
+  {% if tab_count > 1 %}
+    <div class="tab-buttons">
+      {% for block in section.blocks %}
+        <button class="tab-btn {% if forloop.first %}active{% endif %}" data-tab="tab-{{ block.id }}">
+          {{ block.settings.tab_title }}
+        </button>
+      {% endfor %}
+    </div>
+  {% endif %}
+ 
+  <div class="tab-contents">
+    {% for block in section.blocks %}
+      <div class="tab-content {% if tab_count == 1 or forloop.first %}active{% endif %}" id="tab-{{ block.id }}">
+        <div class="tab-heading">
+          <h2>{{ block.settings.main_heading }}</h2>
+          <p>{{ block.settings.main_paragraph }}</p>
+        </div>
+        <div class="cards-grid">
+          {% for i in (1..4) %}
+            {% assign icon = block.settings["icon_" | append: i] %}
+            {% assign title = block.settings["title_" | append: i] %}
+            {% assign subtitle = block.settings["subtitle_" | append: i] %}
+            {% assign text = block.settings["text_" | append: i] %}
+            {% if title != blank %}
+              <div class="card">
+                {% if icon != blank %}
+                  <img src="{{ icon | image_url: width: 100, height: 100 }}" alt="{{ block.settings["title_" | append: i] }}" width="100" height="100">
+                {% endif %}
+                <h3>{{ title }}</h3>
+                {% if subtitle != blank %}
+                  <h4>{{ subtitle }}</h4>
+                {% endif %}
+                <p>{{ text }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+ 
+<style>
+.custom-tab-section {
+  padding: 40px 20px;
+}
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 10px 20px;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.tab-btn.active {
+  background: #4b1d1d;
+  color: #fff;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.tab-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  text-align: center;
+  padding: 20px;
+}
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+ 
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const section = document.getElementById("custom-tab-section-{{ section.id }}");
+  if (!section) return;
+ 
+  const buttons = section.querySelectorAll(".tab-btn");
+  const contents = section.querySelectorAll(".tab-content");
+ 
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function(){
+      buttons.forEach(b => b.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+ 
+      this.classList.add("active");
+      section.querySelector("#" + this.dataset.tab).classList.add("active");
+    });
+  });
+});
+</script>
+ 

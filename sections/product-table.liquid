@@ -1,0 +1,282 @@
+{%- if product.metafields.custom.compare_products.value -%}
+  <style>
+    /* -------------------------- */
+    /* --- Main Layout & Table CSS --- */
+    /* -------------------------- */
+    .compare-table-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .compare-table-wrapper h2 {
+      font-size: 1.75rem;
+      margin: 0 0 1.5rem;
+      color: #59230a;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      border: 1px solid #ddd;
+      padding: 10px;     
+      text-align: center;
+    }
+
+    /* Styling for the first column (field labels) */
+    .compare-table th.label-col,
+    .compare-table td.label-col {
+      text-align: left;
+      font-weight: bold;
+      background-color: #f9f9f9;
+      width: 180px;
+      min-width: 120px;
+    }
+
+    /* Styling for the header row */
+    .compare-table thead th {
+      background-color: #f9f9f9;
+      font-size: 16px;
+      font-weight: bold;
+      position: relative; /* For icon positioning */
+    }
+
+    /* Hiding top and left borders of the top-left empty cell */
+    .compare-table thead th:first-child {
+      background-color: #fff;
+      border-right: 1px solid #ddd; /* Keep the right border */
+      border-left: none; /* Hide the left border */
+      border-top: none; /* Hide the top border */
+    }
+
+    /* Styling for product images and titles */
+    .compare-table .product-header img {
+      max-width: 100px;
+      height: auto; 
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .compare-table .product-header h3 {
+      font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    {% comment %} text-transform: uppercase; {% endcomment %}
+    }
+
+    /* New CSS for the icon and link */
+    .product-header-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .view-product-icon-wrapper {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 10;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .view-product-icon-wrapper:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    .view-product-icon {
+      width: 15px;
+      height: 15px;
+      fill: #333;
+    }
+
+    /* Styling for list items in cells */
+    .compare-list-item {
+      margin: 0px;
+    }
+
+
+    /* -------------------------- */
+    /* --- Mobile Specific CSS for Sticky Table --- */
+    /* -------------------------- */
+    @media (max-width: 768px) {
+      .compare-table {
+        /* This is important to ensure sticky works correctly */
+        position: relative;
+      }
+
+      .compare-table-wrapper {      
+      padding: 0px !important;
+      
+    }
+
+      .compare-table-wrapper h2 {
+        position: sticky;
+        top: 0; /* Sticks to the top of the viewport */
+        margin: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #fff;
+        z-index: 50; /* A high z-index to be on top of the table */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      
+      .compare-table thead {
+        /* We need a parent with a sticky position context */
+        position: sticky;
+        top: 0;
+        z-index: 3; /* This will be a higher z-index for the top row */
+      }
+      
+      .compare-table thead th {
+        /* All header cells should be sticky to the top */
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background-color: #f9f9f9; /* Add a background to prevent transparency */
+      }
+      
+      .compare-table thead th.label-col {
+        position: sticky;
+        left: 0;
+        z-index: 0; /* Highest z-index for the top-left corner */
+      }
+      
+      .compare-table th, 
+      .compare-table td {
+        white-space: nowrap;
+      }
+      
+      .compare-table td.label-col {
+        position: sticky;
+        left: 0;
+        z-index: 2; /* The left column has a lower z-index than the header */
+        background-color: #f9f9f9;
+      }
+    }
+  </style>
+
+  <h2 style="text-align:center;">Make a Conscious Wellness Choice</h2>
+  <div class="compare-table-wrapper">
+    
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="label-col"></th>
+          {%- for compare_item in product.metafields.custom.compare_products.value -%}
+            <th class="product-header">
+              {%- comment -%} Check for URL before creating link {%- endcomment -%}
+              {%- if compare_item.product_url.value -%}
+                <a href="{{ compare_item.product_url.value }}" class="view-product-link">
+                  <div class="view-product-icon-wrapper">
+                    <svg class="view-product-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/><path d="M11 11H8v2h3v3h2v-3h3v-2h-3V8h-2z"/>
+                    </svg>
+                  </div>
+                </a>
+              {%- endif -%}
+
+              {%- comment -%} Make image and title clickable {%- endcomment -%}
+              {%- if compare_item.product_url.value -%}
+                <a href="{{ compare_item.product_url.value }}" class="product-header-link">
+              {%- endif -%}
+
+              {%- if compare_item.product_image -%}
+                <img
+                  src="{{ compare_item.product_image | image_url: width: 200 }}"
+                  alt="{{ compare_item.product_title }}"
+                >
+              {%- endif -%}
+
+              {%- if compare_item.product_title -%}
+                <h3>{{ compare_item.product_title }}</h3>
+              {%- endif -%}
+
+              {%- if compare_item.product_url.value -%}
+                </a>
+              {%- endif -%}
+            </th>
+          {%- endfor -%}
+        </tr>
+      </thead>
+      <tbody>
+        {%- assign items = product.metafields.custom.compare_products.value -%}
+
+        <tr>
+          <td class="label-col">Uses</td>
+          {%- for compare_item in items -%}
+            <td>
+              {%- assign cleaned_uses = compare_item.uses | replace: '[', '' | replace: ']', '' | replace: '"', '' -%}
+              {%- assign uses_list = cleaned_uses | split: ',' -%}
+              {%- for use in uses_list -%}
+                <p class="compare-list-item">{{ use | strip }}</p>
+              {%- endfor -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+
+        <tr>
+          <td class="label-col">Suitable weather</td>
+          {%- for compare_item in items -%}
+            <td>{{ compare_item.weather }}</td>
+          {%- endfor -%}
+        </tr>
+
+        <tr>
+          <td class="label-col">Good for</td>
+          {%- for compare_item in items -%}
+            <td>
+              {%- assign cleaned_benefits = compare_item.health_benefits
+                | replace: '[', ''
+                | replace: ']', ''
+                | replace: '"', ''
+              -%}
+              {%- assign benefits_list = cleaned_benefits | split: ',' -%}
+              {%- for benefit in benefits_list -%}
+                <p class="compare-list-item">{{ benefit | strip }}</p>
+              {%- endfor -%}
+            </td>
+          {%- endfor -%}
+        </tr>
+
+        <tr>
+          <td class="label-col">Aroma</td>
+          {%- for compare_item in items -%}
+            <td>{{ compare_item.aroma }}</td>
+          {%- endfor -%}
+        </tr>
+
+        <tr>
+          <td class="label-col">Flavour</td>
+          {%- for compare_item in items -%}
+            <td>{{ compare_item.flavour }}</td>
+          {%- endfor -%}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Compare Products Section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Compare Products"
+    }
+  ]
+}
+{% endschema %}

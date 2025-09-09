@@ -1,0 +1,114 @@
+{% schema %}
+{
+  "name": "Contact CTA Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We’d love to hear from you! Whether you have a question about products, pricing, or anything else — our team is ready to answer all your questions."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Contact Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact CTA",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="contactCTA-section">
+  <div class="two-column-grid">
+    <div class="left-column">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+    <div class="right-column">
+      {% if section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="contact-button">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .contactCTA-section{
+     background-color: #59230A;
+    display: flex;
+    justify-content: center;
+    padding:20px;
+  }
+    .two-column-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding:0 20px;  
+      max-width:1200px;
+      justify-content:space-between;
+    }
+  .right-column{
+    display:flex;
+    justify-content:center;
+  }
+    .left-column h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+       color: white;     
+    }
+
+    .left-column p {
+      font-size: 10px;
+      color: white;
+      display:flex;
+    justify-content:center;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 6px 30px;
+      background-color:inherit;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-align: center;
+      border:1px solid white;
+    }
+
+    .contact-button:hover {
+      background-color: #005f48;
+    }
+
+    @media screen and (max-width: 768px) {
+      .two-column-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .right-column {
+        margin-top: 20px;
+      }
+    }
+</style>

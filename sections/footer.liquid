@@ -1,0 +1,595 @@
+<a href="https://wa.me/+916281782290" target="_blank" id="whatsapp-icon">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<div class="footer" style="{% if section.settings.background_image %}background-image: url('{{ section.settings.background_image | image_url }}'); background-size: cover; background-repeat: no-repeat;{% endif %} {% if section.settings.background_color and section.settings.background_opacity > 0 %}background-color: {{ section.settings.background_color }}; opacity: {{ section.settings.background_opacity | divided_by: 100.0 }};{% endif %}">
+  <div class="footer-grid">
+    <div class="footer-col-1">
+      {% if section.settings.logo %}
+        <img src="{{ section.settings.logo | image_url }}" alt="Your Logo" style="max-width: 150px;">
+      {% endif %}
+      
+      <div class="com-add">{{ section.settings.address }}</div>
+      
+     
+      {% if section.settings.mobile_number != blank %}
+        <div class="mobile-number-wrapper">
+          <a href="tel:{{ section.settings.mobile_number | remove: ' ' }}" style="color:white; text-decoration:none;">
+            <svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/>
+            </svg>
+            <span class="mobile-number">{{ section.settings.mobile_number }}</span>
+          </a>
+        </div>
+      {% endif %}
+
+     
+      {% if section.settings.grievance_email != blank %}
+        <div class="grievance-email">
+          <a href="mailto:{{ section.settings.grievance_email }}" style="color:white; text-decoration:none;">
+            <svg class="mail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <span>{{ section.settings.grievance_email }}</span>
+          </a>
+        </div>
+      {% endif %}
+      
+      <div class="social-icons" style="margin-top: 20px;">
+        {%- if section.settings.facebook_icon_type == 'image' and section.settings.facebook_icon_image -%}
+          <a href="{{ section.settings.facebook_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            <img src="{{ section.settings.facebook_icon_image | image_url }}" alt="Facebook">
+          </a>
+        {%- elsif section.settings.facebook_icon_type == 'svg' and section.settings.facebook_icon_svg -%}
+          <a href="{{ section.settings.facebook_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            {{ section.settings.facebook_icon_svg }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.twitter_icon_type == 'image' and section.settings.twitter_icon_image -%}
+          <a href="{{ section.settings.twitter_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            <img src="{{ section.settings.twitter_icon_image | image_url }}" alt="Twitter">
+          </a>
+        {%- elsif section.settings.twitter_icon_type == 'svg' and section.settings.twitter_icon_svg -%}
+          <a href="{{ section.settings.twitter_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            {{ section.settings.twitter_icon_svg }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.instagram_icon_type == 'image' and section.settings.instagram_icon_image -%}
+          <a href="{{ section.settings.instagram_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            <img src="{{ section.settings.instagram_icon_image | image_url }}" alt="Instagram">
+          </a>
+        {%- elsif section.settings.instagram_icon_type == 'svg' and section.settings.instagram_icon_svg -%}
+          <a href="{{ section.settings.instagram_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            {{ section.settings.instagram_icon_svg }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.linkedin_icon_type == 'image' and section.settings.linkedin_icon_image -%}
+          <a href="{{ section.settings.linkedin_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            <img src="{{ section.settings.linkedin_icon_image | image_url }}" alt="LinkedIn">
+          </a>
+        {%- elsif section.settings.linkedin_icon_type == 'svg' and section.settings.linkedin_icon_svg -%}
+          <a href="{{ section.settings.linkedin_icon_link | default: '#' }}" target="_blank" rel="noopener">
+            {{ section.settings.linkedin_icon_svg }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="footer-col-2">
+  <h3>{{ section.settings.main_menu_heading }}</h3>
+  <ul>
+    {% comment %}
+      Iterate through the links in the menu selected in 'main_menu' setting
+    {% endcomment %}
+    {% for link in linklists[section.settings.main_menu].links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="footer-col-3">
+  <h3>{{ section.settings.policies_menu_heading }}</h3>
+  <ul>
+    {% comment %}
+      Iterate through the links in the menu selected in 'policies_menu' setting
+    {% endcomment %}
+    {% for link in linklists[section.settings.policies_menu].links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+   <div class="footer-col-4">
+    <h3>{{ section.settings.collections_menu_heading }}</h3>
+    <ul>
+      {% comment %}
+        Iterate through the links in the menu selected in 'collections_menu' setting
+      {% endcomment %}
+      {% for link in linklists[section.settings.collections_menu].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  </div>
+</div>
+<div style="background-color:#59230A; padding:10px;">
+    <p style="margin:0px auto; color:#fff; max-width:1150px;">2025 Tharani. All rights reserved.</p>
+</div>
+
+<style>
+  #whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    text-decoration: none;
+    background-color: #25D366;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  #whatsapp-icon:hover {
+    transform: scale(1.1);
+  }
+
+  #whatsapp-icon img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    background: transparent;
+  }
+
+  /* Adjust footer-grid for 4 columns */
+  .footer-grid {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Adjust column widths as needed */
+    gap: 20px;
+    padding: 30px;
+    color: #333;
+    margin: 0 auto;
+  }
+
+  /* General column styling */
+  .footer-col-1,
+  .footer-col-2,
+  .footer-col-3,
+  .footer-col-4 {
+    display: flex;
+    flex-direction: column;
+    color: white; /* Applies to default text in columns */
+  }
+
+  .footer-col-2 h3,
+  .footer-col-3 h3,
+  .footer-col-4 h3,
+  .com-name,
+  .com-add,
+  .grievance-off, /* Keep this if you have other uses, but the grievance_email is new */
+  .footer-menu a,
+  .footer-policies a {
+    color: #59230A !important;
+    font-family:"Montserrat", sans-serif !important;
+  }
+
+  .footer-col-2 h3,
+  .footer-col-3 h3,
+  .footer-col-4 h3 {
+    
+      font-size: 20px;
+    font-weight: bold;
+ 
+  }  
+
+    
+   .com-add{
+  font-size: 16px;
+  margin-top:50px;
+  font-weight:400;
+}
+  
+  /* New styles for mobile number and email */
+  .mobile-number-wrapper,
+  .grievance-email {
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight:400;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+  }
+
+  .mobile-number-wrapper a,
+  .grievance-email a {
+    display: flex;
+    align-items: center;
+    color: #59230A !important; /* Ensure consistent color for links */
+    text-decoration: none;
+    gap:20px;
+  }
+
+  .phone-icon,
+  .mail-icon {
+    width: 20px; /* Adjust icon size as needed */
+    height: 20px;
+    fill: #59230A; /* Icon color */
+  }
+
+  .com-name, /* This class is effectively replaced by .mobile-number-wrapper */
+  .grievance-off { /* This class is effectively replaced by .grievance-email */
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight:400;
+  }
+
+  .footer-menu ul,
+  .footer-policies ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul{
+    padding:0px !important;
+    margin:0px;
+    list-style: none;
+  }
+  li a{
+    color: #59230A;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:400;
+    letter-spacing: 1px;
+    font-family:"Roboto Slab", serif !important;
+  }
+  
+  .footer-menu li,
+  .footer-policies li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .footer-menu a,
+  .footer-policies a {
+    text-decoration: none !important;
+    color: #d1d1d1;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .footer-menu a:hover,
+  .footer-policies a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #D0BD80;
+    border-radius: 50%;
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .social-icons svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Media Queries for Responsiveness */
+  @media (max-width: 992px) { /* Adjust for smaller desktops/larger tablets */
+    .footer-grid {
+      grid-template-columns: 1fr 1fr; /* 2 columns for medium screens */
+    }
+  }
+
+  @media (max-width: 768px) { /* Tablets */
+    .footer-grid {
+      grid-template-columns: 1fr; /* Single column for tablets */
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .footer-col-1,
+    .footer-col-2,
+    .footer-col-3,
+    .footer-col-4 {
+      align-items: center; /* Center content in single column layout */
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) { /* Mobile phones */
+    .footer-grid {
+      padding: 15px;
+    }
+
+    .footer-col-2 h3,
+    .footer-col-3 h3,
+    .footer-col-4 h3 {
+      font-size: 20px; /* Smaller headings on mobile */
+    }
+
+    .footer-menu li,
+    .footer-policies li {
+      font-size: 14px; /* Smaller text on mobile */
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer with Image Uploads",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "label": "Background Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company Name",
+      "default": "Your Company Name",
+      "info": "This field is deprecated; use 'Mobile Number' instead for contact."
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "Your Street Address, City, Postal Code"
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "text",
+      "id": "mobile_number",
+      "label": "Mobile Number",
+      "default": "+1234567890",
+      "info": "This will replace 'Company Name' and link to a phone call."
+    },
+    {
+      "type": "text",
+      "id": "grievance_email",
+      "label": "Grievance Email",
+      "default": "grievance@example.com",
+      "info": "This will replace 'Grievance Officer Name' and link to an email app."
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Section"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "Subscribe to our Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Newsletter Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "url",
+      "id": "newsletter_button_link",
+      "label": "Newsletter Button Link"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Newsletter Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Social Media Icons"
+    },
+    {
+      "type": "select",
+      "id": "facebook_icon_type",
+      "label": "Facebook Icon Type",
+      "options": [
+        { "value": "image", "label": "Image Upload" },
+        { "value": "svg", "label": "SVG Code" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "facebook_icon_image",
+      "label": "Facebook Icon Image"
+    },
+    {
+      "type": "url",
+      "id": "facebook_icon_link",
+      "label": "facebook link"
+    },
+    {
+      "type": "textarea",
+      "id": "facebook_icon_svg",
+      "label": "Facebook Icon SVG Code"
+    },
+    {
+      "type": "select",
+      "id": "twitter_icon_type",
+      "label": "Twitter Icon Type",
+      "options": [
+        { "value": "image", "label": "Image Upload" },
+        { "value": "svg", "label": "SVG Code" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "twitter_icon_image",
+      "label": "Twitter Icon Image"
+    },
+    {
+      "type": "url",
+      "id": "twitter_icon_link",
+      "label": "Twitter link"
+    },
+    {
+      "type": "textarea",
+      "id": "twitter_icon_svg",
+      "label": "Twitter Icon SVG Code"
+    },
+    {
+      "type": "select",
+      "id": "instagram_icon_type",
+      "label": "Instagram Icon Type",
+      "options": [
+        { "value": "image", "label": "Image Upload" },
+        { "value": "svg", "label": "SVG Code" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "instagram_icon_image",
+      "label": "Instagram Icon Image"
+    },
+    {
+      "type": "url",
+      "id": "instagram_icon_link",
+      "label": "instagram link"
+    },
+    {
+      "type": "textarea",
+      "id": "instagram_icon_svg",
+      "label": "Instagram Icon SVG Code"
+    },
+    {
+      "type": "select",
+      "id": "linkedin_icon_type",
+      "label": "LinkedIn Icon Type",
+      "options": [
+        { "value": "image", "label": "Image Upload" },
+        { "value": "svg", "label": "SVG Code" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "linkedin_icon_image",
+      "label": "LinkedIn Icon Image"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_icon_link",
+      "label": "linkedin link"
+    },
+    {
+      "type": "textarea",
+      "id": "linkedin_icon_svg",
+      "label": "LinkedIn Icon SVG Code"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_play_badge",
+      "label": "Google Play Badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_badge",
+      "label": "App Store Badge"
+    },
+    {
+      "type": "text",
+      "id": "contact_button_text",
+      "label": "Contact Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "contact_button_link",
+      "label": "Contact Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "text",
+      "id": "main_menu_heading",
+      "label": "Main Menu Heading",
+      "default": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Select Main Menu"
+    },
+    {
+      "type": "text",
+      "id": "policies_menu_heading",
+      "label": "Policies Menu Heading",
+      "default": "Policies"
+    },
+    {
+      "type": "link_list",
+      "id": "policies_menu",
+      "label": "Select Policies Menu"
+    },
+    {
+      "type": "text",
+      "id": "collections_menu_heading",
+      "label": "Collections Menu Heading",
+      "default": "Collections"
+    },
+    {
+      "type": "link_list",
+      "id": "collections_menu",
+      "label": "Select Collections Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer with Image Uploads",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

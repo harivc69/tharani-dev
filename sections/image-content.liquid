@@ -1,0 +1,278 @@
+<style>
+  .image-left-content-cards {
+    max-width:1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr ; /* Default to one column */   
+    padding:50px; 
+  }
+
+  @media (max-width: 768px) {
+  .image-left-content-cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 100px;
+    padding: 50px;
+}
+    .testimonial-slide {    
+    grid-template-columns:1fr !important;
+    
+}}
+
+@media (max-width: 480px) {
+   .image-left-content-cards {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 100px;
+    padding: 50px;
+}
+    .testimonial-slide {    
+    grid-template-columns:1fr !important;
+    
+}
+}
+
+  @media (min-width: 1024px) {
+    .image-left-content-cards {
+      grid-template-columns: 1fr 1fr; /* Two equal columns on larger screens */
+    }
+
+    /* Swap the order of the grid items on larger screens */
+    .image-left-content-cards > div:first-child {
+      order: 2; /* Image on the right */
+    }
+
+    .image-left-content-cards > div:nth-child(2) {
+      order: 1; /* Content on the left */
+      display: flex;
+        justify-content: center;
+    }
+  }
+
+  .left-content {
+    width:
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Spacing between heading, subheading, button, and cards */
+  }
+
+  .left-content h2 {
+    font-size: 2.75rem; /* Equivalent to text-2xl */
+    font-weight: bold; /* Equivalent to font-bold */
+    margin-bottom: 0; /* Remove default heading margin */
+    color:black;
+  }
+
+  .left-content p {
+    color: #718096; /* Equivalent to text-gray-600 */
+    margin-top: 0; /* Remove default paragraph margin */
+    font-size: 12px;
+  }
+
+  .left-content .button {
+    display: inline-block;
+    background-color: #3b82f6; /* Equivalent to bg-blue-500 */
+    color: white;
+    font-weight: bold; /* Equivalent to font-bold */
+    padding: 8px 16px; /* Equivalent to py-2 px-4 */
+    border-radius: 4px; /* Equivalent to rounded */
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .left-content .button:hover {
+    background-color: #2563eb; /* Equivalent to hover:bg-blue-700 */
+  }
+
+  .cards-grid {
+    display: flex;
+    grid-template-columns: 1fr; /* One column by default */
+    gap: 16px; /* Spacing between cards */
+    margin-top: 24px; /* Equivalent to mt-6 */
+  }
+
+  @media (min-width: 768px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr); /* Three columns on large screens */
+    }
+  }
+
+  .card {   
+    padding: 16px 0px; /* Equivalent to p-4 */
+  }
+
+  .card h3 {
+    font-size: 2.125rem; /* Equivalent to text-lg */
+    font-weight: 600; /* Equivalent to font-semibold */
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    color: #4a5568;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+  .card .card-button {
+    display: inline-block;
+    margin-top: 8px; /* Equivalent to mt-2 */
+    color: #3b82f6; /* Equivalent to text-blue-500 */
+    text-decoration: none;
+  }
+
+  .card .card-button:hover {
+    text-decoration: underline; /* Equivalent to hover:underline */
+  }
+    .image-column{
+      display:flex;
+      justify-content:center;
+    }
+
+  .image-column img {
+    width: 80%;
+    height: auto;
+    object-fit: cover; /* Equivalent to object-cover */
+    border-radius: 20px; /* Equivalent to rounded-md */
+  }
+
+  .image-placeholder {
+    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
+    border-radius: 4px; /* Equivalent to rounded-md */
+    aspect-ratio: 16 / 9; /* Equivalent to aspect-w-16 aspect-h-9 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0; /* Equivalent to text-gray-400 */
+    text-align: center;
+  }
+</style>
+
+<div class="image-left-content-cards">
+  <div class="image-column">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | img_url: 'large' }}" alt="{{ section.settings.image.alt | default: section.settings.heading }}">
+    {% else %}
+      <div class="image-placeholder">
+        <span>No image selected</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="left-content">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+
+
+    <div class="cards-grid" style="display:flex; gap:20px;">
+      {% for block in section.blocks %}
+        <div class="card">
+          {% if block.settings.card_title != blank %}
+            <h3>{{ block.settings.card_title }}</h3>
+          {% endif %}
+          {% if block.settings.card_content != blank %}
+            <p>{{ block.settings.card_content }}</p>
+          {% endif %}
+          {% if block.settings.card_button_label != blank and block.settings.card_button_link != blank %}
+            <a href="{{ block.settings.card_button_link }}" class="card-button">{{ block.settings.card_button_label }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.subheading != blank %}
+      <p>{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="button">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image & Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title"
+        },
+        {
+          "type": "richtext",
+          "id": "card_content",
+          "label": "Card Content"
+        },
+        {
+          "type": "text",
+          "id": "card_button_label",
+          "label": "Card Button Label"
+        },
+        {
+          "type": "url",
+          "id": "card_button_link",
+          "label": "Card Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Right Content Left & Cards",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
