@@ -42,7 +42,6 @@
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
               <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
-              <h2>Test</h2>
               <button
                 class="drawer__close"
                 type="button"
@@ -85,70 +84,6 @@
           </span>
         </button>
       </div>
-      <details class="available-offers">
-          <summary class="available-offers-summary">
-            <div class="available-offers-heading">
-              <div class="left-side">
-                <img
-                  src="https://cdn.shopify.com/s/files/1/0701/5861/4718/files/icons8-discount-50.png?v=1754979455"
-                  alt="off-icon"
-                  class="offer-icon"
-                  width="24"
-                  height="24"
-                >
-                <div>
-                  <h4>Available offers for you</h4>
-                  <p class="available-offers-note">All coupons are applicable on SP</p>
-                </div>
-
-                {% assign coupon_count = 0 %}
-
-                {% if shop.metafields.custom.available_coupons != blank %}
-                  {% for coupon in shop.metafields.custom.available_coupons.value %}
-                    {% assign coupon_count = coupon_count | plus: 1 %}
-                  {% endfor %}
-                {% endif %}
-
-                <span class="offers-count">{{ coupon_count }}</span>
-              </div>
-              <span class="summary__arrow">
-                <span class="svg-wrapper sidebar">
-                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L5 5L9 1" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                </span>
-              </span>
-            </div>
-          </summary>
-          <div class="available-offers-content">
-            {% comment %}
-              This is where your dynamic coupon code cards go.
-              Use the same Liquid loop logic as in the previous response.
-            {% endcomment %}
-            <div class="offer-cards-container">
-              {% if shop.metafields.custom.available_coupons != blank %}
-                {% for coupon in shop.metafields.custom.available_coupons.value %}
-                  <div class="offer-card">
-                    <div class="offer-details">
-                      <p class="offer-title">{{ coupon.title }}</p>
-                      <ul class="offer-conditions">
-                        {% if coupon.terms_and_conditions != blank %}
-                          <li>{{ coupon.terms_and_conditions }}</li>
-                        {% endif %}
-                      </ul>
-                    </div>
-                    <div class="coupon-action">
-                      <span class="coupon-code-pill">{{ coupon.code }}</span>
-                      <button class="copy-button" type="button" onclick="copyCouponCode('{{ coupon.code }}')">
-                        Copy
-                      </button>
-                    </div>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-        </details>
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -565,7 +500,73 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
 
-        
+        <details class="available-offers">
+          <summary class="available-offers-summary">
+            <div class="available-offers-heading">
+              <div class="left-side">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0701/5861/4718/files/icons8-discount-50.png?v=1754979455"
+                  alt="off-icon"
+                  class="offer-icon"
+                  width="24"
+                  height="24"
+                >
+                <div>
+                  <h4>Available offers for you</h4>
+                  <p class="available-offers-note">All coupons are applicable on SP</p>
+                </div>
+                
+{% assign coupon_count = 0 %}
+
+{% if shop.metafields.custom.available_coupons != blank %}
+  {% for coupon in shop.metafields.custom.available_coupons.value %}
+    {% assign coupon_count = coupon_count | plus: 1 %}
+  {% endfor %}
+{% endif %}
+
+<span class="offers-count">{{ coupon_count }}</span>
+
+
+
+              </div>
+              <span class="summary__arrow">
+                <span class="svg-wrapper sidebar">
+                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </span>
+            </div>
+          </summary>
+          <div class="available-offers-content">
+            {% comment %}
+              This is where your dynamic coupon code cards go.
+              Use the same Liquid loop logic as in the previous response.
+            {% endcomment %}
+            <div class="offer-cards-container">
+              {% if shop.metafields.custom.available_coupons != blank %}
+                {% for coupon in shop.metafields.custom.available_coupons.value %}
+                  <div class="offer-card">
+                    <div class="offer-details">
+                      <p class="offer-title">{{ coupon.title }}</p>
+                      <ul class="offer-conditions">
+                        {% if coupon.terms_and_conditions != blank %}
+                          <li>{{ coupon.terms_and_conditions }}</li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                    <div class="coupon-action">
+                      <span class="coupon-code-pill">{{ coupon.code }}</span>
+                      <button class="copy-button" type="button" onclick="copyCouponCode('{{ coupon.code }}')">
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </details>
       </cart-drawer-items>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
